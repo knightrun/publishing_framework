@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ guideTitle }} || {{ guideSubTitle }}</title>
+    <link rel="icon" type="image/png" href="/@guide/images/favicon_192.png" sizes="192x192">
+    <link rel="stylesheet" href="/@guide/css/pretty.css">
+    <link rel="stylesheet" href="/@guide/css/jquery.scrollbar.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="/@guide/js/jquery-1.10.2.min.js"></script>
+    <script src="/@guide/js/pretty.js"></script>
+    <script src="/@guide/js/index.js"></script>
+    <script src="/@guide/js/jquery.scrollbar.min.js"></script>
+</head>
+<body>
+<div class="skip">
+    <a href="#container">컨텐츠 바로가기</a>
+</div>
+<div class="code-wrapper">
+    <header>
+        <h1><a href="/@guide/basic/basic.html">PUBLISHING GUIDE</a></h1>
+        <nav>
+            <ul>
+                {% for item in guideGnb %}
+                    <li{% if item.text == guideTitle %} class="is-active"{% endif %}><a href="{{ item.link }}">{{ item.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="container" class="container">
+            <menu>
+                <div class="scrollbar-inner">
+                    <ul>
+                        {{ guideMenuIndex | addGlobalVar('guideMenuIndex') }}
+                        {{ guideMenu | addGlobalVar('guideMenu') }}
+                        {% set list = _eval('(function(){
+                            return env.vars.guideMenu["menu" + parseInt(env.vars.guideMenuIndex) ] ;
+                        }())') %}
+
+                        {% for item in list %}
+                            <li{% if item.text == guideSubTitle %} class="is-active"{% endif %}>
+                                <a href="{{ item.link }}">
+                                    <i class="{{ item.iconClass }}"></i>
+                                    <span>{{ item.text }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </menu>
+
+            <div class="content">
+                <h2><i class="fas fa-caret-square-right"></i> {{ guideSubTitle }}</h2>
+
+                <!-- guide content -->
+
+
+                {% block body %}
+                {% endblock %}
+
+
+                <!-- guide content -->
+
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

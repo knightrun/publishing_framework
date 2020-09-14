@@ -1,0 +1,190 @@
+{% set guideMenuIndex = 5 %}
+{% set guideTitle = "스크립트" %}
+{% set guideSubTitle = "공통" %}
+
+
+{% extends "@guide/index.html" %}
+{% block body %}
+
+
+    <section class="code-section">
+        <h3 class="code-section__title">SCRIPT</h3>
+        <div class="code-section__content">
+            <h4>Installation</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+&lt;-- plugin --&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts/plugins/jquery/jquery-1.10.2.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts/plugins/tweenmax/TweenMax.min.js"&gt;&lt;/script&gt;
+
+&lt;-- custom plugin --&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts/plugins/accordion.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts//plugins/tab.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts//plugins/toggle.js"&gt;&lt;/script&gt;
+
+&lt;-- common --&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts/common/PUB.object.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts/common/PUB.core.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts/common/PUB.md.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts/common/common.js"&gt;&lt;/script&gt;
+
+&lt;!--[if lte IE 9]&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts/ie9/html5.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8" src="/dependency/scripts/ie9/respond.min.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;</pre>
+            </div>
+
+            <h4>common.js</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+PUB.UI.elem.$doc = $(document);
+PUB.UI.elem.$win = $(window);
+PUB.UI.elem.$html = $('html');
+PUB.UI.elem.$body = $('body');
+
+commonInit()
+    - 공통 init 코드
+
+// 뷰타입의 변화가 있을때 trigger됨
+PUB.UI.elem.$win.on('mq', function( oldViewType, newViewType ){
+    // 'mobile' , 'tablet', 'desktop'
+});</pre>
+            </div>
+
+            <h4>PUB.core.js</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+PUB.UI
+PUB.UI.Components (function)
+PUB.UI.LIBS (object)
+PUB.UI.keys (object)
+PUB.UI.elem (object:dom) 엘리먼트 캐싱
+    .$doc
+    .$win
+    .$html
+    .$body
+    .$head
+
+PUB.UI.events (object)  이벤트명 상수처리
+
+PUB.UI.log('메시지','컬러값');
+    * console.log 랩핑
+
+PUB.UI.debug('메시지');
+    * mobile 단말에서 우상단에 로그 찍힘
+
+
+PUB.UI.transitionEndName
+    * CSS TransitionEnd 이벤트 명
+
+PUB.UI.animationEndName
+    * CSS animationEnd 이벤트 명
+
+PUB.UI.getScrollTop()
+    - 윈도우 스크롤 Top 리턴
+
+PUB.UI.getScrollWidth()
+    - 해당 브라우저의 ScrollBar의 width 값 리턴.
+
+PUB.UI.scrollLock( setToLock, activeCallback, inactiveCallback )
+    - setToLock : true / false
+
+PUB.UI.layer
+    - 안드로이드 뒤로가기물리키를 위한 layer관리
+
+PUB.UI.dim( method, withAnimation, callback );
+    - scrollLock과 dim는 Modal과 loading에서 사용됨</pre>
+            </div>
+
+            <h4>PUB.md.js</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+PUB.MD.getBrowser( callback, params );
+    - 브라우저 체크
+
+PUB.MD.openNewWindow( href, name, option );
+    - APP에서는 location을 변경, 그외에는 window.open동작
+
+PUB.MD.popup();
+    - PUB.MD.popup().bind( a Tag object );
+    - 사용 data 어트리뷰트
+        - width, height, x, y, name
+
+PUB.MD.DELAY_FUNC( cb, ms );
+    - _.debounce 와 동일
+
+PUB.MD.CHK_DEVICE()
+    - PUB.VARS.IS_VIEWTYPE, PUB.VARS.IS_HAND_DEVICE 설정
+
+PUB.MD.FOCUSABLE( $target, justVisible );
+    - $target 은 jquery wrapper element
+    - justVisible 옵션은 visible 상태인 focus 엘리먼트만 리턴여부
+
+PUB.MD.EventDispatcher()
+    - event dispatcher
+
+PUB.MD.Extends( inherit, parents )
+    - prototype 상속
+
+PUB.MD.LABELPLACEHOLDER( $eleArray );
+    - input placeholder
+
+PUB.MD.aspectRatio( ratio=[16:9], base=[width,height], $obj );
+    - $obj의 base를 기준으로 높이든 너비든 비율대로 지정
+
+PUB.MD.changeVideoRatio( $base, $obj, reinit )
+    - video full size로 조정
+
+PUB.MD.changeImageRatio( $base, $image );
+    - image full size로 조정
+
+PUB.MD.focusWithOutScroll(target, isTargetFocus, callback)
+    - scroll 이동없이 target에 포커스 이동
+
+PUB.MD.cookie 쿠키오브젝트
+
+PUB.MD.videoControl($target, options)
+    - post message
+
+PUB.MD.inView (object)
+    - 화면에 있는지 체크
+
+PUB.MD.storageFactor [미사용]
+    - local/session Storage wrapper</pre>
+            </div>
+
+            <h4>PUB.object.js</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+var PUB = PUB || {};                                                // NAMESPACE 지정
+PUB.VARS = PUB.VARS || {};                                          // 공통 변수 OBJECT
+PUB.VARS.LANG = ( PUB.LANGUAGE && PUB.LANGUAGE.toLowerCase() ) || $('html').attr('lang').toLowerCase();
+PUB.VARS.VIEWPORT_WIDTH = null;                                     // WIDTH
+PUB.VARS.VIEWPORT_HEIGHT = null;                                    // HEIGHT
+PUB.VARS.IS_AUTHOR = false;                                         // AUTHOR mode check
+PUB.VARS.IS_PREVIEW = false;                                        // PREVIEW mode check
+PUB.VARS.IS_HAND_DEVICE = false;                                    // 핸드 드바이스 체크 변수
+PUB.VARS.IS_MOBILE = false;                                         // 디바이스 모바일 변수
+PUB.VARS.IS_TABLET = false;                                         // 디바이스 테블릿 변수
+PUB.VARS.IS_IE8 = ( $('html').hasClass('ie8') ) ? true : false;     // IE8 체크
+PUB.VARS.IS_SIZE = PUB.VARS.IS_SIZE || {};                          // 반응형시 SIZE OBJECT
+PUB.VARS.IS_SIZE.MAXMOBILE = 721;                                   // 반응형시 MOBILE 최대값
+PUB.VARS.IS_SIZE.MAXTABLET = 1023;                                  // 반응형시 TABLET 최대값
+PUB.VARS.IS_HTML = ( window.is_html === false ) ? false : true;     // 퍼블리싱 코드
+PUB.VARS.USERAGENT = navigator.userAgent.toLowerCase();
+PUB.VARS.IS_APP = PUB.VARS.USERAGENT.indexOf('project') !== -1;
+PUB.VARS.IS_APP_ANDROID = PUB.VARS.IS_APP && PUB.VARS.USERAGENT.indexOf('android') !== -1; //안드로이드앱
+PUB.VARS.IS_APP_IOS = PUB.VARS.IS_APP && PUB.VARS.USERAGENT.indexOf('iphone') !== -1; //ios앱
+PUB.VARS.IS_ANDROID = PUB.VARS.USERAGENT.indexOf('android') !== -1; //안드로이드 체크
+PUB.VARS.IS_ANDROID_NAVER_APP = PUB.VARS.IS_ANDROID && PUB.VARS.USERAGENT.indexOf('naver(inapp') !== -1; // 안드로이드 네이버 앱 체크
+PUB.VARS.IS_SAMSUNG_BROWSER = PUB.VARS.USERAGENT.indexOf('samsungbrowser') !== -1; //삼성브라우저 체크
+
+PUB.MD = PUB.MD || {};                                              // 공통 모듈
+PUB.MD.DEV = PUB.MD.DEV || {};                                      // 개발자용 공통 모듈
+PUB.UI = PUB.UI || {};
+</pre>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

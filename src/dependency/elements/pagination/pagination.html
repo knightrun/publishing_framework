@@ -1,0 +1,9 @@
+{% macro make(list) %}
+    <div class="pagination">
+        <a href="#" class="prev"><span class="screen--out">이전</span></a>
+        {% for item in list %}
+            <a href="{{ item.link }}" {% if item.active %}class="is-active"{% endif %}><span>{{ item.number }}</span></a>
+        {% endfor %}
+        <a href="#" class="next"><span class="screen--out">다음</span></a>
+    </div>
+{% endmacro %}

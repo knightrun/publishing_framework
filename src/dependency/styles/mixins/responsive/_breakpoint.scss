@@ -1,0 +1,134 @@
+// breakpoint mediaquery  사용시
+// $point : desktop-l, desktop-s, tablet, mobile-l, mobile-s 포인트 선택
+// $firstMobile : min-width : true, max-width : false
+
+@mixin breakpoint($point, $firstMobile : true) {
+	$mediaType: ();
+	$exMediaType : ();
+
+	$point-desktop-l : $desktop-l;
+	$point-desktop-m : $desktop-m;
+	$point-desktop-s : $desktop-s;
+	$point-tablet : $tablet;
+	$point-tablet-l : $tablet-l;
+	$point-mob-l : $mob-l;
+	$point-mob-s : $mob-s;
+	$point-content-l : 1460px; // 예외케이스 추가
+
+
+	@if $firstMobile == true {
+		$mediaType: min-width;
+		$exMediaType: max-width;
+	} @else {
+		$mediaType: max-width;
+		$exMediaType: min-width;
+		$point-desktop-l : $point-desktop-l - 1;
+		$point-desktop-m : $point-desktop-m - 1;
+		$point-desktop-s : $point-desktop-s - 1;
+		$point-tablet : $point-tablet - 1;
+		$point-tablet-l : $point-tablet-l - 1;
+		$point-mob-l : $point-mob-l - 1;
+		$point-mob-s : $point-mob-s - 1;
+	}
+
+
+	@if $point == desktop-l {
+		@media all and(#{$mediaType}: $point-desktop-l) {
+			@content;
+		}
+	} @else if $point == desktop-m {
+		@media all and(#{$mediaType}: $point-desktop-m) {
+			@content;
+		}
+	} @else if $point == desktop-s {
+		@media all and(#{$mediaType}: $point-desktop-s) {
+			@content;
+		}
+	} @else if $point == tablet {
+		@media all and(#{$mediaType}: $point-tablet) {
+			@content;
+		}
+	} @else if $point == tablet-l {
+		@media all and(#{$mediaType}: $point-tablet-l) {
+			@content;
+		}
+	} @else if $point == mobile-l {
+		@media all and(#{$mediaType}: $point-mob-l) {
+			@content;
+		}
+	} @else if $point == mobile-s {
+		@media all and(#{$mediaType}: $point-mob-s) {
+			@content;
+		}
+	} @else if $point == landscape {
+		@media screen and(orientation: landscape) {
+			@content;
+		}
+	} @else if $point == portrait {
+		@media screen and(orientation: portrait) {
+			@content;
+		}
+	} @else if $point == content-l { // 예외케이스 추가
+		@media all and(#{$mediaType}: $point-content-l) {
+			@content;
+		}
+	}
+
+}
+
+
+
+// breakpoint class 사용시
+// $class : 상속받을 클래스명
+// $point : desktop-l, desktop-s, tablet, mobile-l, mobile-s 포인트 선택
+
+@mixin breakpointClass($class, $point) {
+	@if $point == desktop-l {
+		@at-root .desktop-l #{$class}{
+			@content;
+		}
+	} @else if $point == desktop-m {
+		@at-root .desktop-m #{$class}{
+			@content;
+		}
+	} @else if $point == desktop-s {
+		@at-root .desktop-s #{$class}{
+			@content;
+		}
+	} @else if $point == tablet {
+		@at-root .tablet #{$class} {
+			@content;
+		}
+	} @else if $point == tablet-l {
+		@at-root .tablet-l #{$class} {
+			@content;
+		}
+	} @else if $point == mobile-l {
+		@at-root .mobile-l #{$class} {
+			@content;
+		}
+	} @else if $point == mobile-s {
+		@at-root .mobile-s #{$class} {
+			@content;
+		}
+	}
+}
+
+
+@mixin respond-above($mq) {
+	@media (min-width: $mq) {
+		@content;
+	}
+}
+
+@mixin respond-between($mq-min, $mq-max) {
+	@media (min-width: $mq-min) and (max-width: $mq-max) {
+		@content;
+	}
+}
+
+@mixin respond-below($mq) {
+	@media (max-width: $mq) {
+		@content;
+	}
+}

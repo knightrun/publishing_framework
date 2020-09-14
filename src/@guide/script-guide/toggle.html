@@ -1,0 +1,91 @@
+{% set guideMenuIndex = 5 %}
+{% set guideTitle = "스크립트" %}
+{% set guideSubTitle = "토글" %}
+
+
+{% extends "@guide/index.html" %}
+{% block body %}
+
+
+    <section class="code-section">
+        <h3 class="code-section__title">HTML</h3>
+        <div class="code-section__content">
+
+            <h4>Installation</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+&lt;script type="text/javascript" src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="toggle.js"&gt;&lt;/script&gt;</pre>
+            </div>
+
+            <h4>Markup</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+&lt;div class="tab" data-js="toggle"&gt;
+    &lt;div class="anchor__group"&gt;
+        &lt;a href="#" data-js="toggle__anchor" class="toggle__anchor"&gt;버튼&lt;/a&gt;
+        &lt;a href="#" data-js="toggle__anchor" class="toggle__anchor"&gt;버튼&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="panel__group"&gt;
+        &lt;a href="#" data-js="toggle__panel" class="toggle__panel"&gt;내용&lt;/a&gt;
+        &lt;a href="#" data-js="toggle__panel" class="toggle__panel"&gt;내용&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <p><i class="fas fa-angle-right"></i>index로 매칭되기 때문에 data-js="toggle"안에 어떤형식이든 순서만 맞춰주면됨</p>
+        </div>
+    </section>
+
+    <section class="code-section">
+        <h3 class="code-section__title">SCRIPT</h3>
+        <div class="code-section__content">
+
+            <h4>Use</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+$('[data-js="tab"]').uiToggle();</pre>
+            </div>
+
+            <h4>Options</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+defaults = {
+    mode : 'static',		    // slide, fade, static
+    speed : 300,
+    initOpen : false,
+    easing : 'swing',
+
+    isAutoOpen : true,
+    isAutoClose : false,
+    isAutoFocus : true,
+    isLockScroll : true,
+
+    $panel : null,
+    $close : null,
+
+    stateText : {
+        open : 'open',
+        close : 'close'
+    },
+    activeClass : 'is-active',
+
+    onBeforeOpen : null,
+    onAfterOpen : null,
+    onBeforeClose : null,
+    onAfterClose : null
+}
+</pre>
+            </div>
+
+            <h4>Methods</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+destroy()</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

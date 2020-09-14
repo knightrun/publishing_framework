@@ -1,0 +1,14 @@
+{
+    "page_title": "기타",
+    "progress" : "완료",
+    "remarks" : "비고",
+    "category" : "기타 > 기타",
+    "layout" : {
+        "header": false,
+        "footer": false,
+        "class_container": "",
+        "class_main": "main",
+        "class_inner": "inner"
+    },
+    "content" : "other"
+}

@@ -1,0 +1,199 @@
+@import 'mixins/responsive/breakpoint';
+
+@mixin common_options-space() {
+
+	/* common space */
+	$optionName: ('xxxl', 'xxl', 'xl', 'l', 'mm', 'm', 'ss', 's');
+	$optionMobileSize: (100px, 80px, 60px, 50px, 40px, 30px, 20px, 10px);
+	$optionTabletSize: (150px, 100px, 80px, 60px, 40px, 30px, 20px, 10px);
+	$optionDesktopSize: (150px, 100px, 80px, 60px, 40px, 30px, 20px, 10px);
+	$gutter-m : 30px;
+	$gutter-t : 30px;
+	$gutter-d : 30px;
+
+	@for $item from 0 to length($optionName) {
+		.common-spacing-top--#{unquote( nth($optionName, $item+1) )} {
+			padding-top: nth($optionMobileSize, $item+1);
+		}
+		.common-spacing-bottom--#{unquote( nth($optionName, $item+1) )} {
+			padding-bottom: nth($optionMobileSize, $item+1);
+		}
+
+		@include breakpoint($point: tablet) {
+			.common-spacing-top--#{unquote( nth($optionName, $item+1) )} {
+				padding-top: nth($optionDesktopSize, $item+1);
+			}
+			.common-spacing-bottom--#{unquote( nth($optionName, $item+1) )} {
+				padding-bottom: nth($optionDesktopSize, $item+1);
+			}
+		}
+
+		@include breakpoint($point: desktop-s) {
+			.common-spacing-top--#{unquote( nth($optionName, $item+1) )} {
+				padding-top: nth($optionTabletSize, $item+1);
+			}
+			.common-spacing-bottom--#{unquote( nth($optionName, $item+1) )} {
+				padding-bottom: nth($optionTabletSize, $item+1);
+			}
+		}
+	}
+
+
+	@include respond-below($mq:$tablet - 1) {
+		.gutter--mobile--left {
+			padding-left: $gutter-m/2;
+		}
+		.gutter--mobile--right {
+			padding-right: $gutter-m/2;
+		}
+	}
+
+	@include respond-between($mq-min:$tablet, $mq-max:$desktop-s - 1){
+		.gutter--tablet--left {
+			padding-left: $gutter-t/2;
+		}
+		.gutter--tablet--right {
+			padding-right: $gutter-t/2;
+		}
+	}
+
+
+	@include respond-above($mq:$desktop-s){
+		.gutter--web--left {
+			padding-left: $gutter-d/2;
+		}
+		.gutter--web--right {
+			padding-right: $gutter-d/2;
+		}
+	}
+
+}
+
+@mixin common_options-text() {
+
+	/* text size */
+	$fontOptionName: ('txxl', 'txl', 'tl', 'tm_1', 'tm_2', 'ts_1', 'ts_2');
+	$fontMobileSize: (40px, 30px, 30px, 26px, 18px, 14px, 14px);
+	$fontTabletSize: (50px, 40px, 30px, 26px, 22px, 18px, 16px);
+	$fontDesktopSize: (50px, 40px, 30px, 26px, 22px, 18px, 16px);
+
+	$fontMobileLh : (1.3, 1.4, 1.4, 1.5, 1.7, 1.7, 1.7);
+	$fontTabletLh : (1.4, 1.3, 1.4, 1.5, 1.6, 1.7, 1.7);
+	$fontDesktopLh : (1.4, 1.3, 1.4, 1.5, 1.6, 1.7, 1.7);
+
+	@for $item from 0 to length($fontOptionName) {
+		.common-text--#{unquote( nth($fontOptionName, $item+1) )} {
+			font-size: nth($fontMobileSize, $item+1);
+			line-height: nth($fontMobileLh, $item+1);
+		}
+
+		@include breakpoint($point: tablet) {
+			.common-text--#{unquote( nth($fontOptionName, $item+1) )} {
+				font-size: nth($fontTabletSize, $item+1);
+				line-height: nth($fontTabletLh, $item+1);
+			}
+		}
+
+		@include breakpoint($point: desktop-s) {
+			.common-text--#{unquote( nth($fontOptionName, $item+1) )} {
+				font-size: nth($fontDesktopSize, $item+1);
+				line-height: nth($fontDesktopLh, $item+1);
+			}
+		}
+	}
+
+	.common-text--bold{
+		@include fontBoldset();
+	}
+}
+
+@mixin common_options-position() {
+
+	/* box align */
+	.float--left{
+		float:left;
+	}
+	.float--right{
+		float:right;
+	}
+	.float--clear{
+		clear:both;
+	}
+
+
+	/* text align */
+	.text-align--left{
+		text-align:left;
+	}
+	.text-align--right{
+		text-align:right;
+	}
+	.text-align--center{
+		text-align:center;
+	}
+
+	.text--point-color--1 {
+		color:$pointColor1;
+	}
+
+	/* IR */
+	.screen--out {
+		position:absolute;
+		width:1px;
+		height:1px;
+		margin:-1px;
+		border:0;
+		clip:rect(0 0 0 0);
+		overflow:hidden
+	}
+	span {
+		&.mblock {
+			display: block;
+			@include breakpoint($point: tablet-l) {
+				display: inline-block;
+			}
+		}
+		&.pcblock{
+			display:inline;
+			@include breakpoint($point: tablet-l) {
+				display: block;
+			}
+		}
+		&.block {
+			display: block;
+		}
+	}
+	sup {
+		font-family: inherit;
+		font-weight: inherit;
+	}
+
+	/* float clear */
+	.clearfix:after {
+		clear:both;
+		display:block;
+		content:"";
+		height:0;
+		visibility:hidden;
+	}
+
+	.clearfix {
+		display:block;
+		min-height:1px;
+	}
+
+	/* position align */
+	.pos--static {
+		position: static;
+	}
+	.pos--relative {
+		position: relative;
+	}
+	.pos--absolute {
+		position: absolute;
+	}
+	.pos--fixed {
+		position: fixed;
+	}
+
+}

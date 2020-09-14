@@ -1,0 +1,170 @@
+@import "mixins/language/global/en";
+
+$compName : 'accordion';
+
+@import 'mixins/language/global/ko';
+
+/* mobile, tablet, desktop */
+$acc__offImg : './images/ico-plus.png';
+$acc__onImg : './images/ico-minus.png';
+
+.#{$compName} {
+    position: relative;
+
+    &__tit {
+        float: left;
+        font-weight:bold;
+    }
+
+    &__header {
+        padding: 0 20px;
+        @include clearfix();
+        @include breakpoint($point: tablet) {
+            padding:0;
+        }
+    }
+
+    &__list{
+        border-top:1px solid #e6e6e6;
+    }
+    &-item {
+        &__tit{
+            display:block;
+            position:relative;
+            width:100%;
+            text-align:left;
+            color:#666;
+            border-bottom:1px solid #e6e6e6;
+            padding:23px 50px 23px 15px;
+            font-size:14px;
+            line-height:25px;
+            @include fontBoldset();
+            @include breakpoint($point: tablet) {
+                padding:23px 50px 23px 30px;
+                line-height:32px;
+                font-size:18px;
+            }
+            &:after {
+                display: block;
+                width:18px;
+                height:18px;
+                position: absolute;
+                right:15px;
+                top:50%;
+                margin-top:-9px;
+                content:'';
+                background-image:url($acc__offImg);
+                background-repeat:no-repeat;
+                background-position:50% 50%;
+            }
+            &.is-active {
+                color:#1b65b3;
+                border-bottom:0;
+                &:after {
+                    background-image: url($acc__onImg);
+                }
+            }
+        }
+        &__cont{
+            display:none;
+            overflow:hidden;
+            &.is-active {
+                display:block;
+            }
+        }
+
+        &__area{
+            background-color: #f5f5f5;
+            color:#333;
+            padding:30px 15px 50px;
+            font-size:14px;
+            line-height:25px;
+            @include breakpoint($point: tablet) {
+                padding:30px 30px 50px;
+                font-size:18px;
+                line-height:32px;
+            }
+            .par__area {
+
+            }
+        }
+    }
+}
+
+._guide {
+    margin:30px;
+    &__h1 {
+        margin:0.5em 0;
+        font-size:4em;
+    }
+    &__h2 {
+        margin:0.5em 0;
+        font-size:3em;
+    }
+    &__h3 {
+        margin:0.5em 0;
+        font-size:2em;
+    }
+    &__h4 {
+        margin:0.5em 0;
+        font-size:1.5em;
+    }
+    &__hr {
+        display:block;
+        margin:2em 0;
+        border-top:1px solid #333;
+    }
+
+    pre {
+        display:block;
+        background-color:#eee;
+        margin:1em 0;
+        padding:2em 1em;
+        font-size:1em;
+    }
+}
+
+.sample {
+    &__title {
+        display: block;
+        padding:15px;
+        background-color: #343a40;
+        font-size:24px;
+        font-weight:bold;
+        color:#fff;
+
+        &--case {
+            padding:15px;
+            font-size:20px;
+            background-color: #e2e2e2;
+            color:#0f0f0f;
+            border-top: 1px solid #909294;
+            border-bottom: 1px solid #909294;
+        }
+    }
+
+    &__notice {
+        background-color: rgba(0,0,0,.03);
+        padding:15px;
+        font-size:18px;
+    }
+
+    &__guide {
+        li {
+            position: relative;
+            padding-left: 10px;
+            margin-top: 10px;
+            &:before {
+                content:'-';
+                position: absolute;
+                top: 0;
+                left: 0;
+                color:#000;
+            }
+        }
+    }
+
+    &__code {
+        padding:30px 0;
+    }
+}

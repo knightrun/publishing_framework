@@ -1,0 +1,142 @@
+@import "mixins/language/global/ko";
+
+.sample {
+    &__title {
+        display: block;
+        padding:15px;
+        background-color: #343a40;
+        font-size:24px;
+        font-weight:bold;
+        color:#fff;
+
+        &--case {
+            padding:15px;
+            font-size:20px;
+            background-color: #e2e2e2;
+            color:#0f0f0f;
+            border-top: 1px solid #909294;
+            border-bottom: 1px solid #909294;
+        }
+    }
+
+    &__notice {
+        background-color: rgba(0,0,0,.03);
+        padding:15px;
+        font-size:18px;
+    }
+
+    &__guide {
+        li {
+            position: relative;
+            padding-left: 10px;
+            margin-top: 10px;
+            &:before {
+                content:'-';
+                position: absolute;
+                top: 0;
+                left: 0;
+                color:#000;
+            }
+        }
+    }
+
+    &__code {
+        padding:30px 0;
+    }
+}
+
+.pagination{
+    text-align: center;
+    font-size:0;
+    padding-top:30px;
+    @include breakpoint($point: tablet-l) {
+        padding-top:60px;
+    }
+
+    a{
+        display: inline-block;
+        position: relative;
+        color:#555;
+        border:1px solid #dfdfdf;
+        text-align: center;
+        vertical-align: top;
+        width:34px;
+        line-height:32px;
+        font-size:14px;
+        @include breakpoint($point: tablet-l) {
+            &:hover{
+                color:#fff;
+                background-color: #222;
+                border:1px solid #222;
+            }
+        }
+
+        &.prev, &.next{
+            height:34px;
+            position: relative;
+
+        }
+
+        &.prev{
+            &:after{
+                content: '';
+                display: block;
+                position:absolute;
+                left:50%;
+                top:50%;
+                margin-left:-5px;
+                margin-top:-5px;
+                width: 0;
+                height: 0;
+                border-top: 5px solid transparent;
+                border-right: 10px solid #222;
+                border-bottom: 5px solid transparent;
+            }
+
+            @include breakpoint($point: tablet-l) {
+                &:hover{
+                    &:after{
+                        border-right: 10px solid #fff;
+                    }
+                }
+            }
+        }
+
+        &.next{
+            &:after{
+                content: '';
+                display: block;
+                position:absolute;
+                left:50%;
+                top:50%;
+                margin-left:-5px;
+                margin-top:-5px;
+                width: 0;
+                height: 0;
+                border-top: 5px solid transparent;
+                border-left: 10px solid #222;
+                border-bottom: 5px solid transparent;
+            }
+
+            @include breakpoint($point: tablet-l) {
+                &:hover{
+                    &:after{
+                        border-left: 10px solid #fff;
+                    }
+                }
+            }
+        }
+
+        & + a{
+            margin-left:10px;
+        }
+
+        &.is-active{
+            color:#fff;
+            background-color: #222 !important;
+            @include breakpoint($point: tablet-l) {
+                border:1px solid #222;
+            }
+        }
+    }
+}

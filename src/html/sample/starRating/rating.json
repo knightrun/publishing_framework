@@ -1,0 +1,11 @@
+{
+    "page" : "sample",
+    "page_title": "starRating",
+    "layout" : {
+        "header": false,
+        "footer": false,
+        "class_container": "",
+        "class_main": "main",
+        "class_inner": "inner"
+    }
+}

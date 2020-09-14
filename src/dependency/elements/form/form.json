@@ -1,0 +1,74 @@
+{
+    "form_sample" : {
+        "required" : true,
+        "placeholder" : {
+            "id" : "phd-join-name",
+            "text" : "성명(한글)"
+        },
+        "id" : "inp-join-name",
+        "title" : "성명",
+        "only" : "kor"
+    },
+    "form_sample2" : {
+        "required" : true,
+        "name" : "radio-test",
+        "icheck" : [
+            {
+                "id" : "rdo-join-1",
+                "label" : "111",
+                "checked" : true,
+                "dataUse" : {
+                    "test" : "test"
+                }
+            },
+            {
+                "id" : "rdo-join-2",
+                "label" : "222"
+            }
+        ]
+    },
+    "form_sample3" : {
+        "required" : true,
+        "name" : "checkbox-test",
+        "icheck" : [
+            {
+                "id" : "chk-join-1",
+                "label" : "333",
+                "checked" : true
+            },
+            {
+                "id" : "chk-join-2",
+                "label" : "444"
+            },
+            {
+                "id" : "chk-join-3",
+                "label" : "555"
+            }
+        ]
+    },
+    "form_sample4" : {
+        "required" : true,
+        "disabled" : true,
+        "placeholder" : {
+            "id" : "phd-disabled-test",
+            "text" : "텍스트 박스 비활성화 테스트"
+        },
+        "id" : "inp-disabled-test",
+        "title" : "텍스트 박스 비활성화 테스트",
+        "only" : "kor"
+    },
+    "form_sample5" : {
+        "required" : true,
+        "placeholder" : {
+            "id" : "texa-test-label",
+            "text" : "텍스트 박스"
+        },
+        "textarea" : {
+            "cols" : "30",
+            "rows" : "5"
+        },
+        "id" : "texa-test",
+        "title" : "텍스트 박스",
+        "maxsize" : 10
+    }
+}

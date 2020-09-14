@@ -1,0 +1,120 @@
+{% set guideMenuIndex = 5 %}
+{% set guideTitle = "스크립트" %}
+{% set guideSubTitle = "아코디언" %}
+
+
+{% extends "@guide/index.html" %}
+{% block body %}
+
+
+    <section class="code-section">
+        <h3 class="code-section__title">HTML</h3>
+        <div class="code-section__content">
+
+            <h4>Installation</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+&lt;script type="text/javascript" src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="TweenMax.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="UIAccordion.js"&gt;&lt;/script&gt;</pre>
+            </div>
+
+            <h4>Markup</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+&lt;div data-js="accordion"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;button type="button" data-js="accordion__anchor"&gt;버튼&lt;/button&gt;
+            &lt;div data-js="accordion__panel"&gt;내용&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;button type="button" data-js="accordion__anchor"&gt;버튼&lt;/button&gt;
+            &lt;div data-js="accordion__panel"&gt;내용&lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;-- or --&gt;
+&lt;div data-js="accordion"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;button type="button" data-js="accordion__anchor"&gt;버튼&lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;button type="button" data-js="accordion__anchor"&gt;버튼&lt;/button&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;div data-js="accordion__panel"&gt;내용&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div data-js="accordion__panel"&gt;내용&lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <p><i class="fas fa-angle-right"></i>index로 매칭되기 때문에 data-js="accordion"안에 어떤형식이든 순서만 맞춰주면됨</p>
+
+            <h4>Data type</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+data-multi=true //이전 패널이 닫히지 않음 (default는 닫힘)</pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-section">
+        <h3 class="code-section__title">SCRIPT</h3>
+        <div class="code-section__content">
+
+            <h4>Use</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+$('[data-js="accordion"]').accordion();
+$('[data-js="accordion"]').data('plugin_accordion').mothod();</pre>
+            </div>
+
+            <h4>Options</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+defaults = {
+    event : 'click',    // 'mouseenter focusin'
+    speed : 0.3,
+    container : '[data-js="accordion"]',
+    anchorEl : '[data-js="accordion__anchor"]',
+    panelEl : '[data-js="accordion__panel"]',
+    activeClassName : 'is-active',
+    disabledClassName : 'is-disabled',
+    multi : false,
+    onLoadAccordion : null,
+    onCompleteAccordion : null,
+    onDestroyAccordion : null
+}
+</pre>
+            </div>
+
+            <h4>Methods</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+dropdownOpen( index ),
+dropdownClose( index)</pre>
+            </div>
+
+            <h4>Events</h4>
+            <div class="code-pre sample-code">
+                <pre class="linenums">
+$('[data-js="accordion"]').on('ACCORDION_OPEN_START', function( e, data ){});
+$('[data-js="accordion"]').on('ACCORDION_OPEN_END', function( e, data ){});
+$('[data-js="accordion"]').on('ACCORDION_CLOSE_START', function( e, data ){});
+$('[data-js="accordion"]').on('ACCORDION_CLOSE_END', function( e, data ){});</pre>
+            </div>
+            <p><i class="fas fa-angle-right"></i>event target의 index, anchor, panel이 data로 전달</p>
+            <p><i class="fas fa-angle-right"></i>_END 이벤트는 onCompleteAccordion 옵션을 지정하지 않았을경우만 발생</p>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

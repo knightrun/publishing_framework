@@ -1,0 +1,20 @@
+@mixin background-size($width: 100%, $height: $width) {
+	@if type-of($width) == 'number' and $height != null {
+		@include css3-prefix('background-size', $width $height);
+	} @else {
+		@include css3-prefix('background-size', $width);
+	}
+}
+
+// Retinize
+@mixin retinize($src, $width, $height){
+	background-image:url($src);
+	@media ( max-width : $screen-sm ) {
+		& {
+			background-image:url( $src );
+			-wekit-background-size: $width $height;
+			background-size: $width $height;
+		}
+	}
+}
+

@@ -1,0 +1,54 @@
+<!-- SEO :: start ::  -->
+
+{#<meta name="description" content="## Page Description, 70 ~ 160 characters ##" />#}
+{#<meta name="keywords" content="## Page Description, 70 ~ 160 characters ##" />#}
+{#<meta property="og:title" content="## Page Title, 10 ~ 70 characters ##" />#}
+{#<meta property="og:description"  content="## Page Description, 70 ~ 160 characters ##" />#}
+{#<meta property="og:image" content="## Image ##" />#}
+{#<meta name="Twitter:card" content="## Twitter Card Image ##" />#}
+{#<meta name="Twitter:url" content="## Twitter URL ##" />#}
+{#<meta name="Twitter:title" content="## Twitter Title ##" />#}
+{#<meta name="Twitter:description" content="## Twitter Description ##" />#}
+
+{#
+<meta name="naver-site-verification" content="## Naver Verification Code ##" />
+<span itemscope="" itemtype="http://schema.org/Organization">
+    <link itemprop="url" href="http://www.mysite.com">
+    <a itemprop="sameAs" href="https://www.facebook.com/myfacebook"></a>
+    <a itemprop="sameAs" href="http://blog.naver.com/myblog"></a>
+    <a itemprop="sameAs" href="http://storefarm.naver.com/mystore"></a>
+</span>#}
+<!-- Naver 구조화된 데이터 마크업 지정코드 -->
+
+<!-- Google Tag Manager -->
+<!--<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-XXXX');</script>-->
+<!-- End Google Tag Manager -->
+
+
+{#<meta name="format-detection" content="telephone=no" />#}
+{#<meta name="title" content="## Page Title, 10 ~ 70 characters ##" />#}
+{#<meta property="og:type" content="## Page Contents Type, Article or Website ##" />#}
+{#<meta property="og:url" content="## Page URL ##" />#}
+{#<meta property="og:site_name" content="Page Site" />#}
+{#<meta property="og:video" content="## A URL to a video file that complements this object. ##" />#}
+
+<meta name="robots" content="nofollow" />
+<meta name="format-detection" content="telephone=no,address=no,email=no">
+<meta name="title" content="{{ seo.title }}" />
+<meta name="description" content="{{ seo.description }}" />
+<meta name="keywords" content="{{ seo.keywords }}" />
+<meta property="og:title" content="{{ seo.ogTitle }}" />
+<meta property="og:description" content="{{ seo.ogDescription }}" />
+<meta property="og:image" content="{{ seo.ogImage }}" />
+<meta name="twitter:card" content="{{ seo.twitterCard }}" />
+<meta name="twitter:title" content="{{ seo.twitterTitle }}"/>
+<meta name="twitter:description" content="{{ seo.twitterDescription }}" />
+<meta name="twitter:image" content="{{ seo.twitterImage }}" />
+<meta itemprop="name" content="{{ seo.itemPropName }}" />
+<meta itemprop="description" content="{{ seo.itemPropDescription }}" />
+<meta itemprop="image" content="{{ seo.itemPropImage }}" />
+

@@ -1,0 +1,8 @@
+{% macro make( label='', min=0, max=5, value=0 ) %}
+    <div class="c-counter" data-js="counter">
+        <button type="button" class="c-counter__button c-counter__button--decrease" data-js="counter__decrease"></button>
+        <input type="number" class="c-counter__field" data-js="counter__number" value="{{ value }}" min="{{ min }}" max="{{ max }}" title="{{ label }}" readonly>
+        <span class="c-counter__view" data-js="counter__view" aria-hidden="true"></span>
+        <button type="button" class="c-counter__button c-counter__button--increase" data-js="counter__increase"></button>
+    </div>
+{% endmacro %}

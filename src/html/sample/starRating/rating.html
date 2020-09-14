@@ -1,0 +1,42 @@
+{% set pageVar = { title: pageTitle, subTitle: "rating" } %}
+{% extends "html/layout/layout.html" %}
+
+{% import "dependency/elements/rating/rating.html" as rating %}
+{% block content %}
+    <h1 class="sample__title">StarRating</h1>
+    <h2 class="sample__title--case">기본형</h2>
+    <div class="sample__code">
+        {{ rating.make("view") }}
+    </div>
+    <br>
+    <h2 class="sample__title--case">클릭형</h2>
+    <div class="sample__code">
+        {{ rating.make("event") }}
+    </div>
+    <br>
+    <h2 class="sample__title--case">점수형</h2>
+    <div class="sample__code">
+        {{ rating.make("number") }}
+    </div>
+{%- endblock %}
+
+{% block script %}
+    <script>
+        $(function(){
+            function starRating() {
+                var $star = $('.star-rating');
+
+                $star.each(function () {
+                    var $this = $(this),
+                        $btns = $this.find('button');
+
+                    $btns.on('click', function () {
+                        $this.attr('data-star-rating', $(this).data('star'));
+                    });
+                });
+            }
+            $('.star-rating').length && starRating();
+        });
+
+    </script>
+{% endblock %}

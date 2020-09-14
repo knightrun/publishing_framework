@@ -1,0 +1,16 @@
+// fontname
+// $fontFamily : fontfamily 사용 이름
+// $fontfile : font filename
+// $fonturl : font file 경로
+// font 파일종류에 따라 필요없는것 주석처리 필요
+
+@mixin fontname($fontFamily, $fontfile, $fonturl) {
+	@font-face {
+		font-family: $fontFamily;
+		//src: url($fonturl + $fontfile + ".eot");
+		//src: url($fonturl + $fontfile + ".eot#iefix") format('embedded-opentype'),
+		//src : url($fonturl + $fontfile + ".woff2") format('woff2'),
+		src : url($fonturl + $fontfile + ".woff") format('woff'),
+		url($fonturl + $fontfile + ".ttf") format('truetype');
+	}
+}

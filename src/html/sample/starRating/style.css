@@ -1,0 +1,174 @@
+.sample__title {
+	display: block;
+	padding: 15px;
+	background-color: #343a40;
+	font-size: 24px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.sample__title--case {
+	padding: 15px;
+	font-size: 20px;
+	background-color: #e2e2e2;
+	color: #0f0f0f;
+	border-top: 1px solid #909294;
+	border-bottom: 1px solid #909294;
+}
+
+.sample__notice {
+	background-color: rgba(0, 0, 0, 0.03);
+	padding: 15px;
+	font-size: 18px;
+}
+
+.sample__guide li {
+	position: relative;
+	padding-left: 10px;
+	margin-top: 10px;
+}
+
+.sample__guide li:before {
+	content: '-';
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #000;
+}
+
+.sample__code {
+	padding: 30px 0;
+}
+
+.rating {
+	text-align: center;
+}
+
+.star-wrap {
+	position: relative;
+}
+
+.star-wrap .star-rating {
+	position: relative;
+	display: inline-block;
+	width: 116px;
+	height: 17px;
+	background: url("images/m_s_starRating_off.png") no-repeat;
+}
+
+.star-wrap .star-rating:before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url("images/m_s_starRating_on.png") no-repeat;
+}
+
+@media all and (min-width: 1024px) {
+	.star-wrap .star-rating {
+		width: 125px;
+		height: 21px;
+		background: url("images/starRating_off.png") no-repeat;
+	}
+	.star-wrap .star-rating:before {
+		background: url("images/starRating_on.png") no-repeat;
+	}
+}
+
+.star-wrap .star-rating[data-star-rating="1"]:before {
+	width: 10%;
+}
+
+.star-wrap .star-rating[data-star-rating="2"]:before {
+	width: 20%;
+}
+
+.star-wrap .star-rating[data-star-rating="3"]:before {
+	width: 30%;
+}
+
+.star-wrap .star-rating[data-star-rating="4"]:before {
+	width: 40%;
+}
+
+.star-wrap .star-rating[data-star-rating="5"]:before {
+	width: 50%;
+}
+
+.star-wrap .star-rating[data-star-rating="6"]:before {
+	width: 60%;
+}
+
+.star-wrap .star-rating[data-star-rating="7"]:before {
+	width: 70%;
+}
+
+.star-wrap .star-rating[data-star-rating="8"]:before {
+	width: 80%;
+}
+
+.star-wrap .star-rating[data-star-rating="9"]:before {
+	width: 90%;
+}
+
+.star-wrap .star-rating[data-star-rating="10"]:before {
+	width: 100%;
+}
+
+.star-wrap .star-rating[data-star-rating="0"]:before {
+	width: 0;
+}
+
+.star-wrap .star-rating button {
+	position: relative;
+	float: left;
+	width: 10%;
+	height: 16px;
+}
+
+@media all and (min-width: 1024px) {
+	.star-wrap .star-rating button {
+		height: 21px;
+	}
+}
+
+.star-wrap[data-type="number"] {
+	padding-left: 26px;
+}
+
+@media all and (min-width: 1024px) {
+	.star-wrap[data-type="number"] {
+		padding-left: 32px;
+	}
+}
+
+.star-wrap[data-type="number"] .star-rating {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 23.2px;
+	height: 17px;
+}
+
+@media all and (min-width: 1024px) {
+	.star-wrap[data-type="number"] .star-rating {
+		width: 25px;
+		height: 21px;
+	}
+}
+
+.star-wrap[data-type="number"] span {
+	font-family: "Sunflower Bold", "Malgun Gothic", sans-serif;
+	color: #555;
+	font-size: 12px;
+}
+
+@media all and (min-width: 1024px) {
+	.star-wrap[data-type="number"] span {
+		font-size: 20px;
+	}
+}

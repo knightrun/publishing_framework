@@ -1,0 +1,50 @@
+{% macro make( paramObj, sizeModifier ) %}
+    {#
+		콤보박스의 사이즈 베리로,
+		기본 값이 2x, 작은사이즈가 1x
+	#}
+
+    {% if sizeModifier %}
+        {% set _sizeModifier = sizeModifier %}
+    {% else %}
+        {% set _sizeModifier = '1' %}
+    {% endif %}
+
+    {% set obj = assign({
+        id : '',
+        name : '',
+        title : '',
+        disabled : '',
+        dataAttr : {
+            target : ''
+        },
+        class : ['combobox', BEM('combobox',null,_sizeModifier), 'initial'],
+        option : [],
+        optionGroup : []
+    },paramObj) %}
+
+
+    <div data-js="combobox" {% if attr('maxheight', obj).length %} data-{{ attr('maxheight', obj) | safe}} {% endif %}>
+        <select {{attr('name',obj) | safe}}
+                {{attr('id',obj) | safe}}
+                {{attr('title',obj) | safe}}
+                {{attr('disabled',obj) | safe}}
+                {{attr('dataAttr',obj) | safe}}
+                {{attr('class',obj) | safe}}>
+
+            {% if obj.optionGroup.length %}
+                {% for group in obj.optionGroup %}
+                    <optgroup {{attr('label',group) | safe}}>
+                        {% for list in group.option %}
+                            <option value="{{ list.value }}" {{attr('selected',list) | safe}} {{attr('title',list) | safe}}>{{ list.text }}</option>
+                        {% endfor %}
+                    </optgroup>
+                {% endfor %}
+            {% else %}
+                {% for list in obj.option %}
+                    <option value="{{ list.value }}" {{attr('selected',list) | safe}} {{attr('title',list) | safe}}>{{ list.text }}</option>
+                {% endfor %}
+            {% endif %}
+        </select>
+    </div>
+{% endmacro %}

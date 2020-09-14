@@ -1,0 +1,108 @@
+{% set guideMenuIndex = 0 %}
+{% set guideTitle = "기본가이드" %}
+{% set guideSubTitle = "작성규칙" %}
+
+
+{% extends "@guide/index.html" %}
+{% block body %}
+
+
+
+	<section class="code-section">
+		<h3 class="code-section__title">Css</h3>
+		<div class="code-section__content">
+			<p><i class="fas fa-angle-right"></i>클래스 네이밍은 BEM(Block Element Modifier) 방법론 사용(예: block__element--modifier)</p>
+			<p>* BEM(Block Element Modifier) 방법론 참고 사이트 : <a href="http://getbem.com/" target="_blank">http://getbem.com/</a></p>
+			<p><i class="fas fa-angle-right"></i>클래스 셀렉트를 우선시 하고 태그(div, p 등) 셀렉트 지양</p>
+			<p><i class="fas fa-angle-right"></i>css3 속성은 크로스브라우징을 위하여 각 브라우저별 Vendor Prefix를 함께 적용(-webkit-, -moz-, -o-, -ms-)</p>
+		</div>
+	</section>
+
+	<section class="code-section">
+		<h3 class="code-section__title">Js</h3>
+		<div class="code-section__content">
+			<p><i class="fas fa-angle-right"></i><a href="/@guide//script-guide/basic.html">스크립트 메뉴 참고 (클릭!)</a></p>
+		</div>
+	</section>
+
+	<section class="code-section">
+		<h3 class="code-section__title">Html</h3>
+		<div class="code-section__content">
+			<p><i class="fas fa-angle-right"></i>모든 html 파일은 W3C validation을 통과해야 함</p>
+			<p><i class="fas fa-angle-right"></i>html 파일 내 이미지, 스타일, 스크립트 등의 모든 경로는 상대경로를 원칙으로 함</p>
+			<p><i class="fas fa-angle-right"></i>백그라운드 이미지만으로 표현된 오브젝트는 웹접근성 준수를 위하여 screen--out 클래스를 사용, 적절한 텍스트 입력이 필요</p>
+
+			<h4>페이지별 마크업</h4>
+			<div class="code-pre sample-code">
+				<pre class="linenums">
+ &lt;main class="main"&gt;
+	&lt;section class="각 섹션별 그룹"&gt;
+		&lt;!-- section markup --&gt;
+	&lt;/section&gt;
+ &lt;/main></pre>
+			</div>
+			<p><i class="fas fa-angle-right"></i>마크업은 body 태그 하위로 페이지 그룹 폴더명, 페이지 코드명을 순차적으로 감싸야 함</p>
+			<p><i class="fas fa-angle-right"></i>옵션에 따라 마크업이 변하는 경우 옵션에 상응하는 샘플 마크업을 함께 제시하여야 함</p>
+
+			<h4>HTML 작성 규칙 예시</h4>
+			<div class="code-pre sample-code">
+				<pre class="linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ko" class="no-js"&gt;
+&lt;head&gt;
+	&lt;!-- 인코딩 선언 --&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;!-- 모바일용 viewport 선언 --&gt;
+	&lt;meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"&gt;
+	&lt;!-- IE 최신 브라우저 지원 --&gt;
+	&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+	&lt;!-- SEO 관련 meta --&gt;
+	&lt;meta name="description" content="## Page Description, 70 ~ 160 characters ##"&gt;
+	.
+	.
+	.
+	&lt;!-- favicon --&gt;
+	&lt;link rel="icon" type="image/x-icon" href="favicon.ico" /&gt;
+	.
+	.
+	.
+	&lt;!-- 타이틀 --&gt;
+	&lt;title&gt; title &lt;/title&gt;
+
+	&lt;!-- 공통 css --&gt;
+	&lt;link rel="stylesheet" href="../../css/common.css"&gt;
+	.
+	.
+	.
+	&lt;!-- 페이지 css --&gt;
+	&lt;link rel="stylesheet" href="../../css/main.css"&gt;
+	.
+	.
+	.
+	&lt;!-- 공통 js --&gt;
+	&lt;script type="text/javascript" charset="utf-8" src="../../dependency/scripts/plugins/jquery/jquery-1.10.2.min.js"&gt;&lt;/script&gt;
+	.
+	.
+	.
+	&lt;!-- ie9 html5 및 mediaquery 지원 library --&gt;
+	&lt;!--[if lte IE 9]&gt;
+	&lt;script type="text/javascript" charset="utf-8" src="../../dependency/scripts/ie9/html5.js"&gt;&lt;/script&gt;
+	&lt;script type="text/javascript" charset="utf-8" src="../../dependency/scripts/ie9/respond.min.js"&gt;&lt;/script&gt;
+	&lt;![endif]--&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;!-- contents html 작성 --&gt;
+	&nbsp;
+	&lt;!-- inline script --&gt;
+	&lt;script type="text/javascript"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+				</pre>
+			</div>
+
+		</div>
+	</section>
+
+
+{% endblock %}

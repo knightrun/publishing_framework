@@ -1,0 +1,135 @@
+.sample__title {
+	display: block;
+	padding: 15px;
+	background-color: #343a40;
+	font-size: 24px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.sample__title--case {
+	padding: 15px;
+	font-size: 20px;
+	background-color: #e2e2e2;
+	color: #0f0f0f;
+	border-top: 1px solid #909294;
+	border-bottom: 1px solid #909294;
+}
+
+.sample__notice {
+	background-color: rgba(0, 0, 0, 0.03);
+	padding: 15px;
+	font-size: 18px;
+}
+
+.sample__guide li {
+	position: relative;
+	padding-left: 10px;
+	margin-top: 10px;
+}
+
+.sample__guide li:before {
+	content: '-';
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #000;
+}
+
+.sample__code {
+	padding: 30px 0;
+}
+
+.pagination {
+	text-align: center;
+	font-size: 0;
+	padding-top: 30px;
+}
+
+@media all and (min-width: 1024px) {
+	.pagination {
+		padding-top: 60px;
+	}
+}
+
+.pagination a {
+	display: inline-block;
+	position: relative;
+	color: #555;
+	border: 1px solid #dfdfdf;
+	text-align: center;
+	vertical-align: top;
+	width: 34px;
+	line-height: 32px;
+	font-size: 14px;
+}
+
+@media all and (min-width: 1024px) {
+	.pagination a:hover {
+		color: #fff;
+		background-color: #222;
+		border: 1px solid #222;
+	}
+}
+
+.pagination a.prev, .pagination a.next {
+	height: 34px;
+	position: relative;
+}
+
+.pagination a.prev:after {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -5px;
+	margin-top: -5px;
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-right: 10px solid #222;
+	border-bottom: 5px solid transparent;
+}
+
+@media all and (min-width: 1024px) {
+	.pagination a.prev:hover:after {
+		border-right: 10px solid #fff;
+	}
+}
+
+.pagination a.next:after {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -5px;
+	margin-top: -5px;
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-left: 10px solid #222;
+	border-bottom: 5px solid transparent;
+}
+
+@media all and (min-width: 1024px) {
+	.pagination a.next:hover:after {
+		border-left: 10px solid #fff;
+	}
+}
+
+.pagination a + a {
+	margin-left: 10px;
+}
+
+.pagination a.is-active {
+	color: #fff;
+	background-color: #222 !important;
+}
+
+@media all and (min-width: 1024px) {
+	.pagination a.is-active {
+		border: 1px solid #222;
+	}
+}

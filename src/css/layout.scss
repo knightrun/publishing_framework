@@ -1,0 +1,22 @@
+@import "mixins/language/global/ko";
+.container{
+}
+
+.header{
+   h2{
+    @include fontBoldset();
+     height:20px;
+  }
+}
+
+#main{
+}
+
+.footer{
+  a{
+  }
+  span{
+    @include fontMediumset();
+  }
+}
+

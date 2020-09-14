@@ -1,0 +1,38 @@
+{% set guideMenuIndex = 0 %}
+{% set guideTitle = "기본가이드" %}
+{% set guideSubTitle = "웹폰트" %}
+
+
+{% extends "@guide/index.html" %}
+{% block body %}
+
+<section class="code-section">
+	<h3 class="code-section__title">웹폰트</h3>
+	<div class="code-section__content">
+		<h4>font-family</h4>
+
+		<p><i class="fas fa-angle-right"></i> font-family: "웹폰트", "Malgun Gothic", sans-serif</p>
+
+		<h4>폰트 리스트</h4>
+		<div class="code-pre sample-code">
+				<pre class="linenums">
+@font-face {
+	font-family: "NotoSansKR Light";
+	src: url("/dependency/fonts/NotoSansKR-Light.woff2") format("woff2"), url("/dependency/fonts/NotoSansKR-Light.woff") format("woff"), url("/dependency/fonts/NotoSansKR-Light.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "NotoSansKR Regular";
+	src: url("/dependency/fonts/NotoSansKR-Regular.woff2") format("woff2"), url("/dependency/fonts/NotoSansKR-Regular.woff") format("woff"), url("/dependency/fonts/NotoSansKR-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "NotoSansKR Bold";
+	src: url("/dependency/fonts/NotoSansKR-Bold.woff2") format("woff2"), url("/dependency/fonts/NotoSansKR-Bold.woff") format("woff"), url("/dependency/fonts/NotoSansKR-Bold.ttf") format("truetype");
+}</pre>
+		</div>
+	</div>
+</section>
+
+
+{% endblock %}

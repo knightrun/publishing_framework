@@ -1,0 +1,120 @@
+{% macro cta( ctaObj ) %}
+
+    {% set linkobj = ctaObj %}
+    {% if linkobj.target == "new" %}
+        <a href="#lnk" target="_blank" title="새 창 열기">{{ linkobj.text }}</a>
+        {% elif linkobj.target == "popup" %}
+        <a href="{{ linkobj.popOpt.href }}" class="use--pop" data-name="{{ linkobj.popOpt.name }}"{% if linkobj.popOpt.width %} data-width="{{ linkobj.popOpt.width }}"{% endif %}{% if linkobj.popOpt.height %} data-height="{{ linkobj.popOpt.height }}"{% endif %}{% if linkobj.popOpt.x %} data-x="{{ linkobj.popOpt.x }}"{% endif %}{% if linkobj.popOpt.y %} data-y="{{ linkobj.popOpt.y }}"{% endif %} title="새 창 열기">{{ linkobj.text }}</a>
+        {% elif linkobj.target == "modal" %}
+        <a href="#lnk" class="use--modal" data-width="{{ linkobj.popOpt.width }}" data-height="{{ linkobj.popOpt.height }}" data-x="{{ linkobj.popOpt.x }}" data-y="{{ linkobj.popOpt.y }}" title="새 창 열기">{{ linkobj.text }}</a>
+    {% else %}
+        <a href="#lnk">{{ linkobj.text }}</a>
+    {% endif %}
+
+{% endmacro %}
+
+
+{% macro ctaButton( ctaObj ) %}
+    {% set linkobj = ctaObj %}
+    <button type="{{ linkobj.type }}"{% if linkobj.class %} class="{{ linkobj.class }}"{% endif %}{% if linkobj.title %} title="{{ linkobj.title }}"{% endif %}{% if linkobj.value %} value="{{ linkobj.value }}"{% endif %} {{attr('dataAttr',ctaObj) | safe}}>{{ linkobj.text }}</button>
+{% endmacro %}
+
+
+{# 기본버튼 button 태그용 #}
+{% macro button( obj ) %}
+    {% set buttonData = assign({
+        tag : 'button',
+        type : 'button',
+        id : '',
+        class : [],
+        icon : '',
+        text : '',
+        title : '',
+        value : '',
+        disabled : '',
+        dataAttr : {}
+    },obj) %}
+
+    {# 아이콘 #}
+    {% if _.size(buttonData.icon) %}
+        {% set icon = assign({},{"class" : buttonData.icon }) %}
+    {% endif %}
+
+    <button {{attr('type',buttonData) | safe}}
+            {{attr('id',buttonData) | safe}}
+            {{attr('title',buttonData) | safe}}
+            {{attr('value',buttonData) | safe}}
+            {{attr('dataAttr',buttonData) | safe}}
+            {{attr('disabled',buttonData) | safe}}
+            {{attr('class',buttonData) | safe}}><span>
+				{% if buttonData.icon %}
+                    <span {{attr('class',icon) | safe}}>{{buttonData.text}}</span>
+                {% else %}
+                    {{buttonData.text}}
+                {% endif %}
+		</span></button>
+{% endmacro %}
+
+{# 기본버튼 A태그용 #}
+{% macro a( obj ) %}
+    {% set anchorData = assign({
+        tag : 'a',
+        href : '#',
+        id : '',
+        class : [],
+        icon : '',
+        target : '',
+        title : '',
+        text : '',
+        disabled : '',
+        dataAttr : {}
+    },obj)
+    %}
+
+    {# 아이콘 #}
+    {% if _.size(anchorData.icon) %}
+        {% set icon = assign({},{"class" : anchorData.icon }) %}
+    {% endif %}
+
+    {# disabled #}
+    {% if anchorData.disabled %}
+        {% set disabledClass = anchorData.class | pushIn('is-disabled') %}
+    {% endif %}
+
+    <a
+            {{attr('href',anchorData) | safe}}
+            {{attr('id',anchorData) | safe}}
+            {{attr('target',anchorData) | safe}}
+            {{attr('title',anchorData) | safe}}
+            {{attr('dataAttr',anchorData) | safe}}
+            {{attr('class',anchorData) | safe}}><span>
+			{% if anchorData.icon %}
+                <span {{attr('class',icon) | safe}}>{{anchorData.text}}</span>
+            {% else %}
+                {{anchorData.text}}
+            {% endif %}
+		</span></a>
+{% endmacro %}
+
+{# 자세히보기 > #}
+{% macro link( obj ) %}
+    {% set linkData = assign({
+        tag : 'a',
+        href : '#',
+        id : '',
+        class : [],
+        target : '',
+        title : '',
+        text : '',
+        dataAttr : {}
+    },obj) %}
+
+    <a
+            {{attr('href',linkData) | safe}}
+            {{attr('id',linkData) | safe}}
+            {{attr('target',linkData) | safe}}
+            {{attr('title',linkData) | safe}}
+            {{attr('dataAttr',linkData) | safe}}
+            {{attr('disabled',linkData) | safe}}
+            {{attr('class',linkData) | safe}}>{{linkData.text}}</a>
+{% endmacro %}

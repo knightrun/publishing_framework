@@ -1,0 +1,4 @@
+// text-shadow 처리
+@mixin text-shadow($x, $y, $blur, $color) {
+	text-shadow: $x $y $blur $color;
+}

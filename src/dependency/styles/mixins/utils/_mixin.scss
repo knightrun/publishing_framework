@@ -1,0 +1,29 @@
+// 공통 셋팅
+
+// options
+@import "mixins/common/options";
+
+// utils //
+@import 'mixins/utils/css3-prefix';
+@import 'mixins/utils/clearfix';
+@import 'mixins/utils/getUnit';
+
+// responsive
+@import 'mixins/responsive/breakpoint';
+
+// background
+@import 'mixins/background/size';
+@import 'mixins/background/gradients';
+@import 'mixins/background/opacity';
+
+// text
+@import 'mixins/text/ellipsis';
+@import 'mixins/text/fonts';
+@import 'mixins/text/shadow';
+@import 'mixins/text/text-bullet';
+
+// motion
+@import 'mixins/motion-ui/animation';
+
+// ui
+@import 'mixins/elements/pagination';

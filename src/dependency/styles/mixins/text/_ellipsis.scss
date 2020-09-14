@@ -1,0 +1,23 @@
+// multi ellipsis
+// $line : line number
+
+@mixin multi-ellipsis($line){
+	display:block;
+	display:-webkit-box;
+	overflow:hidden;
+	-webkit-line-clamp:$line;
+	-webkit-box-orient:vertical;
+	text-overflow:ellipsis;
+}
+
+
+// multi ellipsis
+// $line : height 값
+
+@mixin single-ellipsis($height){
+	display:block;
+	height:$height;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+}

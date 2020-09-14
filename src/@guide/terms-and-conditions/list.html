@@ -1,0 +1,95 @@
+{% set guideMenuIndex = 1 %}
+{% set guideTitle = "약관" %}
+{% set guideSubTitle = "약관 리스트" %}
+
+
+{% extends "@guide/index.html" %}
+{% block body %}
+
+
+	{{ contentNode | addGlobalVar('contentNode') }}
+
+	{% set tmp =  _eval('_.each( env.vars.contentNode, function( item ){
+			var node = item.node;
+			var termsPattern = /terms-and-conditions/;
+			if( node.match( termsPattern ) ){
+				env.vars.compNode_terms = env.vars.compNode_terms || {};
+				env.vars.compNode_terms[ item.name ] = env.vars.compNode_terms[ item.name ] || [];
+				env.vars.compNode_terms[ item.name ].push( node );
+
+			}
+		})')   %}
+
+	{% set list = _eval('(function(){
+	var tmp = {};
+	var len = 0;
+	var keyArr = [];
+	for ( key in env.vars.compNode_terms ) {
+		keyArr.push( key );
+		tmp[key] = env.vars.compNode_terms[key];
+		var sizeArr = tmp[key].length;
+		len = len || 0;
+		len = len + sizeArr
+	}
+
+	function sortObject(obj) {
+	    return Object.keys(obj).sort().reduce(function (result, key) {
+	        result[key] = obj[key];
+	        return result;
+	    }, {});
+	}
+
+	return {
+		tmp : sortObject(tmp),
+		len : len
+	};
+}())') %}
+	{% set totalLen = list.len %}
+	{% for key, value in list.tmp %}
+
+		{% if key === 'etc' %}
+			<h3>{{ key | title }}</h3>
+		{% else %}
+
+			<h3 class="pat30">{{ key | title }}</h3>
+		{% endif %}
+
+
+		<div class="work-list">
+			<span class="work-count">Total : {{ _.size(value) }} </span>
+
+
+			<input type="hidden" id="clipboard">
+			<table>
+				<thead>
+				<tr>
+					<th scope="col">Index</th>
+					<th scope="col">language</th>
+					<th scope="col">URL</th>
+					{#<th scope="col">preview</th>#}
+				</tr>
+				</thead>
+				<tbody>
+				{% for nodelist in value %}
+					{% set map = splitVar(nodelist, '/') %}
+					<tr>
+						<td>{{ loop.index }}</td>
+						<td>{{ _.nth(map, 5) }}</td>
+						<td class="left"><a href="{{ nodelist }}" target="_blank">{{ nodelist }}</a></td>
+						{#<td class="preview"><a href="" target="_blank" title="새 창 링크">preview</a></td>#}
+					</tr>
+				{% endfor %}
+
+
+				</tbody>
+			</table>
+		</div>
+	{% endfor %}
+
+
+	{% set clearMemory = _eval('(function(){
+	delete env.vars.compNode;
+	delete env.vars.compNode_terms;
+}())') %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{
+    "page" : "sample",
+    "page_title": "accordion",
+    "layout" : {
+        "header": false,
+        "footer": false,
+        "class_container": "",
+        "class_main": "main",
+        "class_inner": "inner"
+    },
+    "accordion": {
+        "multi" : true
+    }
+}

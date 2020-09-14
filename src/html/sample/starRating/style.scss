@@ -1,0 +1,139 @@
+@import "mixins/language/global/ko";
+
+.sample {
+    &__title {
+        display: block;
+        padding:15px;
+        background-color: #343a40;
+        font-size:24px;
+        font-weight:bold;
+        color:#fff;
+
+        &--case {
+            padding:15px;
+            font-size:20px;
+            background-color: #e2e2e2;
+            color:#0f0f0f;
+            border-top: 1px solid #909294;
+            border-bottom: 1px solid #909294;
+        }
+    }
+
+    &__notice {
+        background-color: rgba(0,0,0,.03);
+        padding:15px;
+        font-size:18px;
+    }
+
+    &__guide {
+        li {
+            position: relative;
+            padding-left: 10px;
+            margin-top: 10px;
+            &:before {
+                content:'-';
+                position: absolute;
+                top: 0;
+                left: 0;
+                color:#000;
+            }
+        }
+    }
+
+    &__code {
+        padding:30px 0;
+    }
+}
+
+.rating{
+    text-align: center;
+}
+
+.star-wrap{
+    position: relative;
+    .star-rating{
+        position: relative;
+        display: inline-block;
+        width:116px;
+        height:17px;
+        background: url("images/m_s_starRating_off.png") no-repeat;
+
+        &:before{
+            content: '';
+            display: block;
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background: url("images/m_s_starRating_on.png") no-repeat;
+        }
+
+        @include breakpoint($point: tablet-l) {
+            width:125px;
+            height:21px;
+            background: url("images/starRating_off.png") no-repeat;
+
+            &:before{
+                background: url("images/starRating_on.png") no-repeat;
+            }
+        }
+
+        @for $i from 1 through 10 {
+            &[data-star-rating="#{$i}"]{
+                &:before{
+                    width: 10% * $i;
+                }
+            }
+        }
+
+        &[data-star-rating="0"]{
+            &:before{
+                width:0;
+            }
+        }
+
+        button{
+            position: relative;
+            float:left;
+            width:10%;
+            height:16px;
+
+            @include breakpoint($point: tablet-l) {
+                height:21px;
+            }
+        }
+    }
+
+    &[data-type="number"]{
+        padding-left:26px;
+
+        @include breakpoint($point: tablet-l) {
+            padding-left:32px;
+        }
+
+        .star-rating{
+            position: absolute;
+            left:0;
+            top:50%;
+            transform: translateY(-50%);
+            width:23.2px;
+            height:17px;
+
+            @include breakpoint($point: tablet-l) {
+                width:25px;
+                height:21px;
+            }
+        }
+
+        span{
+            @include fontBoldset();
+
+            color:#555;
+            font-size:12px;
+            @include breakpoint($point: tablet-l) {
+                font-size:20px;
+            }
+        }
+    }
+}

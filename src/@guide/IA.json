@@ -1,0 +1,106 @@
+{
+	"guideGnb" : [
+		{
+			"link" : "/@guide/basic/basic.html",
+			"text" : "기본가이드"
+		},
+        {
+            "link" : "/@guide/page/page.html",
+            "text" : "페이지 리스트"
+        },
+		{
+			"link" : "/@guide/sample-list/list.html",
+			"text" : "샘플페이지"
+		},
+		{
+			"link" : "/@guide/other/list.html",
+			"text" : "기타페이지"
+		},
+		{
+			"link" : "/@guide/script-guide/basic.html",
+			"text" : "스크립트"
+		}
+	],
+
+
+	"guideMenu" : {
+
+		"menu0" : [
+			{
+				"link" : "/@guide/basic/basic.html",
+				"text" : "공통가이드",
+				"iconClass" : "fab fa-accusoft"
+			},
+			{
+				"link" : "/@guide/basic/folder.html",
+				"iconClass" : "fas fa-folder",
+				"text" : "폴더구조"
+			},
+			{
+				"link" : "/@guide/basic/role.html",
+				"iconClass" : "fas fa-code",
+				"text" : "작성규칙"
+			},
+			{
+				"link" : "/@guide/basic/webfont.html",
+				"iconClass" : "fas fa-bold",
+				"text" : "웹폰트"
+			}
+		],
+
+        "menu1" : [
+            {
+                "link" : "/@guide/terms-and-conditions/list.html",
+                "text" : "약관 리스트",
+                "iconClass" : "fas fa-list"
+            }
+        ],
+
+		"menu2" : [
+            {
+                "link" : "/@guide/page/page.html",
+                "text" : "페이지 리스트",
+                "iconClass" : "fas fa-list"
+            }
+		],
+
+		"menu3" : [
+			{
+				"link" : "/@guide/other/list.html",
+				"text" : "기타페이지",
+				"iconClass" : "fas fa-at"
+			}
+		],
+
+		"menu4" : [
+			{
+				"link" : "/@guide/sample-list/list.html",
+				"text" : "샘플페이지",
+				"iconClass" : "fas fa-list"
+			}
+		],
+
+		"menu5" : [
+			{
+				"link" : "/@guide/script-guide/basic.html",
+				"text" : "공통",
+				"iconClass" : "fab fa-accusoft"
+			},
+			{
+				"link" : "/@guide/script-guide/accordion.html",
+				"text" : "아코디언",
+				"iconClass" : "fas fa-angle-double-down"
+			},
+			{
+				"link" : "/@guide/script-guide/tab.html",
+				"text" : "탭",
+				"iconClass" : "fas fa-map-signs"
+			},
+			{
+				"link" : "/@guide/script-guide/toggle.html",
+				"text" : "토글",
+				"iconClass" : "fas fa-toggle-on"
+			}
+		]
+	}
+}

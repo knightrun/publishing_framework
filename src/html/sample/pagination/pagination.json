@@ -1,0 +1,34 @@
+{
+    "page" : "sample",
+    "page_title": "pagination",
+    "layout" : {
+        "header": false,
+        "footer": false,
+        "class_container": "",
+        "class_main": "main",
+        "class_inner": "inner"
+    },
+    "list" : [
+        {
+            "link" : "#",
+            "number" : "1",
+            "active" : true
+        },
+        {
+            "link" : "#",
+            "number" : "2"
+        },
+        {
+            "link" : "#",
+            "number" : "3"
+        },
+        {
+            "link" : "#",
+            "number" : "4"
+        },
+        {
+            "link" : "#",
+            "number" : "5"
+        }
+    ]
+}

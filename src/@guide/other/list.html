@@ -1,0 +1,50 @@
+{% set guideMenuIndex = 3 %}
+{% set guideTitle = "기타페이지" %}
+{% set guideSubTitle = "기타페이지" %}
+
+
+{% extends "@guide/index.html" %}
+{% block body %}
+    {{ otherNode | addGlobalVar('otherNode') }}
+
+    {% for page in otherNode %}
+        {% set totalLen = _.size( page.list )%}
+        <h3 class="pat30">{{ page.name }}</h3>
+        <div class="work-list">
+            <span class="work-count">Total : {{ totalLen }} </span>
+            <table>
+                <colgroup>
+                    <col style="width:5%"/>
+                    <col style="width:10%"/>
+                    <col style="width:5%"/>
+                    <col style="width:40%"/>
+                    <col style="width:20%"/>
+                    <col style="width:15%"/>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">페이지명</th>
+                    <th scope="col">진행상황</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">카테고리</th>
+                    <th scope="col">비고</th>
+                    {#<th scope="col">preview</th>#}
+                </tr>
+                </thead>
+                <tbody>
+                {% for nodelist in page.list %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ nodelist.base }}</td>
+                        <td>{% if nodelist.progress %} {{ nodelist.progress }} {% else %} 작업예정 {% endif %}</td>
+                        <td class="left"><a href="{{ nodelist.url }}" target="_blank">{{ nodelist.url }}</a></td>
+                        <td class="left">{% if nodelist.category %} {{ nodelist.category }}{% endif %}</td>
+                        <td>{% if nodelist.remarks %} {{ nodelist.remarks }}{% endif %}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
+{% endblock %}

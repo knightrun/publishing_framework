@@ -1,0 +1,15 @@
+{
+    "page_title": "테스트",
+    "progress" : "완료",
+    "remarks" : "비고",
+    "category" : "테스트 > 테스트",
+    "layout" : {
+        "header": true,
+        "footer": true,
+        "class_container": "",
+        "class_main": "main",
+        "class_inner": "inner"
+    },
+    "cssList" : ["customA, customB"],
+    "content" : "content"
+}

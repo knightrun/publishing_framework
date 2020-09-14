@@ -1,0 +1,37 @@
+{% macro include(fileName) -%}
+    {% include fileName ignore missing -%}
+{% endmacro -%}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        {{ include("html/common/meta.html") }}
+
+        {{ include("html/common/seo.html") }}
+
+        <title>{{ page_title }}</title>
+
+        {{ include("html/common/head.html") }}
+    </head>
+    <body>
+        <div class="container {{ layout.class_container }}">
+            <!-- header -->
+            {% if layout.header %}
+                {{ include("html/common/header.html") }}
+            {% endif %}
+
+            <!-- main -->
+            <main id="main" class="{{ layout.class_main }}">
+                <div class="{{ layout.class_inner }}">
+                    {% block content %}{% endblock %}
+                </div>
+            </main>
+
+            <!-- footer -->
+            {% if layout.footer %}
+                {{ include("html/common/footer.html") }}
+            {% endif %}
+        </div>
+        {% block modal %}{% endblock %}
+        {% block script %}{% endblock %}
+    </body>
+</html>

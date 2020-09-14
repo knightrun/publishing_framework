@@ -1,0 +1,30 @@
+{% macro make(type) %}
+    {% if type == "event" %}
+        <span class="star-wrap" data-type="event">
+            <span class="star-rating" data-star-rating="3">
+                <span class="screen--out">별점 주기</span>
+                <button type="button" data-star="1"><span class="screen--out">1점</span></button>
+                <button type="button" data-star="2"><span class="screen--out">2점</span></button>
+                <button type="button" data-star="3"><span class="screen--out">3점</span></button>
+                <button type="button" data-star="4"><span class="screen--out">4점</span></button>
+                <button type="button" data-star="5"><span class="screen--out">5점</span></button>
+                <button type="button" data-star="6"><span class="screen--out">6점</span></button>
+                <button type="button" data-star="7"><span class="screen--out">7점</span></button>
+                <button type="button" data-star="8"><span class="screen--out">8점</span></button>
+                <button type="button" data-star="9"><span class="screen--out">9점</span></button>
+                <button type="button" data-star="10"><span class="screen--out">10점</span></button>
+            </span>
+        </span>
+    {% elif type == "view" %}
+        <span class="star-wrap" data-type="view">
+            <span class="star-rating" data-star-rating="3">
+                <span class="screen--out">별점 <em class="point">3</em>점</span>
+            </span>
+        </span>
+    {% else %}
+        <span class="star-wrap" data-type="number">
+            <span class="star-rating" data-star-rating="9"><span class="screen--out">별점</span></span>
+            <span class="star-number">9.00</span>
+        </span>
+    {% endif %}
+{% endmacro %}

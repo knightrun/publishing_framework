@@ -1,0 +1,10 @@
+{% set pageVar = { title: pageTitle, subTitle: "pagination" } %}
+{% extends "html/layout/layout.html" %}
+
+{% import "dependency/elements/pagination/pagination.html" as pagination %}
+
+{% block content %}
+    <h1 class="sample__title">Pagination</h1>
+    <h2 class="sample__title--case">기본형</h2>
+    {{ pagination.make(list) }}
+{%- endblock %}

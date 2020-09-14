@@ -1,0 +1,26 @@
+{#<link rel="shortcut icon" href="/images/favicon.ico">#}
+{#<link rel="icon" type="image/png" href="/images/favicon_192.png" sizes="192x192">#}
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/contents.css">
+{% if cssList %}
+    {% for path in cssList %}
+        <link rel="stylesheet" href="/css/{{path}}.css">
+    {% endfor %}
+{% endif %}
+{% if page == "sample" %}
+    <link rel="stylesheet" href="./style.css">
+{% endif %}
+
+<script type="text/javascript" charset="utf-8" src="/dependency/scripts/plugins/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/dependency/scripts/common/PUB.object.js"></script>
+<script type="text/javascript" charset="utf-8" src="/dependency/scripts/common/PUB.core.js"></script>
+<script type="text/javascript" charset="utf-8" src="/dependency/scripts/common/PUB.md.js"></script>
+<script type="text/javascript" charset="utf-8" src="/dependency/scripts/common/common.js"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" charset="utf-8" src="/dependency/scripts/ie9/html5.js"></script>
+<script type="text/javascript" charset="utf-8" src="/dependency/scripts/ie9/respond.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" charset="utf-8" src="/js/ui.js"></script>

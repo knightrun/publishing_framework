@@ -1,0 +1,91 @@
+{% set guideMenuIndex = 0 %}
+{% set guideTitle = "기본가이드" %}
+{% set guideSubTitle = "공통가이드" %}
+
+
+{% extends "@guide/index.html" %}
+{% block body %}
+
+
+	<section class="code-section">
+		<h3 class="code-section__title">문서구조</h3>
+		<div class="code-section__content">
+			<h4>DTD</h4>
+			<div class="code-pre sample-code">
+				<pre class="linenums">&lt;!DOCTYPE HTML&gt;</pre>
+			</div>
+			<p><i class="fas fa-angle-right"></i> 이 사이트는 HTML5 표준 문서로 작성</p>
+			<h4>기본언어</h4>
+			<div class="code-pre sample-code">
+				<pre class="linenums">&lt;html lang="ko"&gt;</pre>
+			</div>
+			<p><i class="fas fa-angle-right"></i> 기본언어는 한글이며, 해당 국가별 언어코드로 변경</p>
+			<h4>기본 문자셋</h4>
+
+			<div class="code-pre sample-code">
+				<pre class="linenums"> &ltmeta charset="utf-8"&gt;</pre>
+			</div>
+			<p><i class="fas fa-angle-right"></i> 기본 문자셋은 UTF-8 입니다.</p>
+			<h4>IE 브라우저 호환성</h4>
+
+			<div class="code-pre sample-code">
+				<pre class="linenums">&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</pre>
+			</div>
+			<p><i class="fas fa-angle-right"></i> 인터넷 익스플로러에서 해당브라우저의 최신 렌더링 엔진으로 표시될 수 있게 강제 변경(IE10 이상)</p>
+			<h4>모바일 용 뷰포트</h4>
+
+			<div class="code-pre sample-code">
+				<pre class="linenums">&lt;meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</pre>
+			</div>
+			<p><i class="fas fa-angle-right"></i> 모바일 단말기에서 사용자가 임의로 화면을 확대/축소 할 수 없고, 기본 너비는 사용자 단말기 너비 지정</p>
+
+		</div>
+	</section>
+
+
+	<section class="code-section">
+		<h3 class="code-section__title">기술기준</h3>
+		<div class="code-section__content">
+			<h4>Css</h4>
+			<p><i class="fas fa-angle-right"></i> css Level 3을 준수하고 기준에 준수하여 작성</p>
+			<p><i class="fas fa-angle-right"></i> 문서 표현을 위한 기본 정의, 레이아웃, 반응형을 위한 media query 등을 정의하고 있습니다. 기본적으로, 레이아웃 구성과 동적 인터렉션을 위해서 ID 셀렉터를 사용하고 정적 디자인 표현을 위해서는 class 셀렉터를 사용합니다. 셀렉터 네이밍은 SMACSS, BEM명명법을 혼용</p>
+			<h4>Javascript</h4>
+			<p><i class="fas fa-angle-right"></i> jQuery version : v1.10.2 사용</p>
+			<p><i class="fas fa-angle-right"></i> 자바스크립트 표준안 ECMAScript 5.1 기준에 준수하여 작성</p>
+		</div>
+	</section>
+
+
+	<section class="code-section">
+		<h3 class="code-section__title">반응형 웹 브레이크 포인트</h3>
+		<div class="code-section__content">
+			<p><i class="fas fa-angle-right"></i>720이하(Mobile), 721이상 1023이하(Tablet : Mobile View), 1024이상 1279이하(Tablet : Web View), 1280이상(Web),  1680이상(Wide-Web)으로 분기하여 media query를 사용</p>
+			<p><i class="fas fa-angle-right"></i>css 기술 순서는 mobile-first로 작성</p>
+		</div>
+	</section>
+
+
+	<section class="code-section">
+		<h3 class="code-section__title">크로스브라우징</h3>
+		<div class="code-section__content">
+			<h4>데스크탑</h4>
+			<p><i class="fas fa-angle-right"></i> Chrome(Latest Version), Firefox(Latest Version), Internet Explorer(IE10 이상), MS Edge(Latest Version)</p>
+
+			<h4>모바일</h4>
+			<p><i class="fas fa-angle-right"></i> mobile version</p>
+		</div>
+	</section>
+
+
+	<section class="code-section">
+		<h3 class="code-section__title">웹접근성</h3>
+		<div class="code-section__content">
+			<p><i class="fas fa-angle-right"></i> 한국형 웹콘텐츠접근성 지침 2.1 (KWAG2.1)에 따른 마크업 한국형 웹콘텐츠접근성 지침 2.1 의 기준에 의거하여 기술합니다. 항목에 대한 자세한 정보는 웹 접근성
+				연구소(http://www.wah.or.kr/)의 “개발자 아카이브” 문서를 참조합니다</p>
+		</div>
+	</section>
+
+
+
+
+{% endblock %}

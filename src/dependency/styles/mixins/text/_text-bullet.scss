@@ -1,0 +1,106 @@
+@mixin text-bullet() {
+    .bullet {
+        &--dot {
+            position: relative;
+            @include vw('padding-left',27px, $mob-l);
+
+            @include breakpoint($point: tablet-l) {
+                @include vw('padding-left',21px, $desktop-s);
+            }
+            @include breakpoint($point: desktop-s) {
+                padding-left:21px;
+            }
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                border-radius: 50%;
+                background-color: #000;
+
+                @include vw('top',6px, $mob-l);
+                @include vw('width',8px, $mob-l);
+                @include vw('height',8px, $mob-l);
+
+                @include breakpoint($point: tablet-l) {
+                    @include vw('top',6px, $desktop-s);
+                    @include vw('width',6px, $desktop-s);
+                    @include vw('height',6px, $desktop-s);
+                }
+                @include breakpoint($point: desktop-s) {
+                    top: 6px;
+                    width: 6px;
+                    height: 6px;
+                }
+            }
+        }
+
+        &--dash {
+            position: relative;
+            @include vw('padding-left',27px, $mob-l);
+
+            @include breakpoint($point: tablet-l) {
+                @include vw('padding-left',21px, $desktop-s);
+            }
+            @include breakpoint($point: desktop-s) {
+                padding-left:21px;
+            }
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                background-color: #000;
+
+                @include vw('top',6px, $mob-l);
+                @include vw('width',8px, $mob-l);
+                @include vw('height',1px, $mob-l);
+
+                @include breakpoint($point: tablet-l) {
+                    @include vw('top',6px, $desktop-s);
+                    @include vw('width',6px, $desktop-s);
+                    @include vw('height',1px, $desktop-s);
+                }
+                @include breakpoint($point: desktop-s) {
+                    top: 6px;
+                    width: 6px;
+                    height: 1px;
+                }
+            }
+        }
+
+        &--square {
+            position: relative;
+            @include vw('padding-left',27px, $mob-l);
+
+            @include breakpoint($point: tablet-l) {
+                @include vw('padding-left',21px, $desktop-s);
+            }
+            @include breakpoint($point: desktop-s) {
+                padding-left:21px;
+            }
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                background-color: #000;
+
+                @include vw('top',15px, $mob-l);
+                width:4px;
+                height:4px;
+
+                @include breakpoint($point: tablet-l) {
+                    @include vw('top',8px, $desktop-s);
+                    width:4px;
+                    height:4px;
+                }
+                @include breakpoint($point: desktop-s) {
+                    top: 8px;
+                    width: 4px;
+                    height: 4px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,178 @@
+{% macro form_input( type="", input, size ) %}
+
+    {% if type=="date" %}
+        {% set _type = "text" %}
+        {% set inputClass = "o-input o-input--date" %}
+    {% else %}
+        {% set _type = type %}
+        {% set inputClass = "o-input o-input--"+_type %}
+    {% endif %}
+
+
+    {% set obj = assign({
+        id : '',
+        name : '',
+        title : '',
+        disabled : '',
+        readonly : '',
+        maxlength : '',
+        dataAttr : {}
+    },input) %}
+
+    {% if _type=="file" %}
+        <div class="input">
+            <div class="input__file">
+                <!--
+                박혜경 :: 2018.07.04 :: start
+                // 1. 빈 속성(name="") 삭제
+                -->
+                <input type="file" accept="{{ input.accept }}"{% if input.name %} name="{{ input.name }}"{% endif %}{% if input.id %} id="{{ input.id }}"{% endif %} class="file-upload" {% if input.maxsize %}data-maxsize="{{ input.maxsize }}"{% endif %}>
+                <!--
+                박혜경 :: 2018.07.04 :: end
+                -->
+                <span class="file-label" aria-hidden="true"><span>파일첨부</span></span>
+            </div>
+            {% if caller %}
+                {{ caller() }}
+            {% endif %}
+        </div>
+    {% else %}
+
+        {# size값이 있을때 input--#size 클래스 추가 #}
+        <div class="input{% if not _.isUndefined(size) %} input--{{ size }}{% endif %}">
+            <div class="input__wrap input__wrap--{{ type }}{% if input.readonly %} form--readonly{% endif %}" {% if input.required %} data-required="required" {% endif %} {% if input.dataTitle %} data-title="{{ input.dataTitle }}"{% endif %}>
+
+                {% if _type=="textarea" %}
+                    {% if input.placeholder %}
+                        {% set placeholder = input.placeholder %}
+                        <span class="input__placeholder"{% if placeholder.id %} id="{{ placeholder.id }}"{% endif %}>{{ placeholder.text | safe }}</span>
+                    {% endif %}
+                    <textarea {{attr('class',input) | safe}}{{attr('id',input) | safe}} class="{{ inputClass }}" {{attr('title',input) | safe}}{% if input.textarea %} cols="{{ input.textarea.cols }}" rows="{{ input.textarea.rows }}"{% endif %}{% if input.name %} name="{{ input.name }}"{% endif %}{% if input.readonly %} tabindex="-1"{% endif %}{% if input.placeholder %} aria-describedby="{{ placeholder.id }}"{% endif %}{{attr('maxlength',input) | safe}}{{attr('dataAttr',input) | safe}}></textarea>
+                {% else %}
+                    {% if input.placeholder %}
+                        {% set placeholder = input.placeholder %}
+                        <span class="input__placeholder"{% if placeholder.id %} id="{{ placeholder.id }}"{% endif %}>{{ placeholder.text }}</span>
+                    {% endif %}
+                    <input type="{{ _type }}"  class="{{ inputClass }}"{% if input.id %} id="{{ input.id }}"{% endif %} title="{{ input.title }}"{% if input.name %} name="{{ input.name }}"{% endif %}{% if input.maxlength %} maxlength="{{ input.maxlength }}"{% endif %}{% if input.value %} value="{{ input.value }}"{% endif %} {% if input.only %} data-only="{{ input.only }}" {% endif %} {% if input.readonly %} readonly="readonly" {% endif %}{% if input.disabled %} disabled="disabled" {% endif %} {% if input.placeholder %} aria-describedby="{{ placeholder.id }}"{% endif %}{{attr('dataAttr',input) | safe}}>
+
+                    {# DATE 타입은 삭제버튼 미노출 #}
+                    {% if type != "date" %}
+                        <button type="button" class="input__removetext">삭제</button>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            {% if caller %}
+                {{ caller() }}
+            {% endif %}
+
+        </div>
+    {% endif %}
+
+{% endmacro %}
+
+
+
+{% macro counter( label='', min=0, max=5, value=0 ) %}
+
+    <div class="c-counter" data-js="counter">
+        <button type="button" class="c-counter__button c-counter__button--decrease" data-js="counter__decrease"></button>
+        <input type="number" class="c-counter__field" data-js="counter__number" value="{{ value }}" min="{{ min }}" max="{{ max }}" title="{{ label }}" readonly>
+        <span class="c-counter__view" data-js="counter__view" aria-hidden="true"></span>
+        <button type="button" class="c-counter__button c-counter__button--increase" data-js="counter__increase"></button>
+    </div>
+
+{% endmacro %}
+
+
+
+{# 이전 icheck 코드 #}
+{#
+
+{% macro form_icheck_origin( type="", input, data="" ) %}
+
+	<div class="input">
+		<div class="icheck__wrap" {% if input.required %} data-required="required" {% endif %} {% if input.dataTitle %} data-title="{{ input.dataTitle }}" {% endif %}>
+
+		{% for icheck in input.icheck %}
+
+			<input type="{{ type }}" id="{{ icheck.id }}" name="{{ input.name }}" value="" {% if icheck.checked %} checked="checked" {% endif %} {% if icheck.disabled %} disabled="disabled" {% endif %} {% if icheck.dataCheckType %} data-check-type="{{ icheck.dataCheckType }}" {% endif %} {% if data=="true" %} {% for name, value in icheck.dataAttr %} data-{{ name }}="{{ value }}" {% endfor %} {% endif %} >
+			<label for="{{ icheck.id }}" {% if icheck.labelClass %} class="{{ icheck.labelClass }}" {% endif %}>
+				{{ icheck.label | safe }}
+			</label>
+		{% endfor %}
+
+		</div>
+        {% if caller %}
+            {{ caller() }}
+        {% endif %}
+	</div>
+
+{% endmacro %}
+
+#}
+
+{# //이전 icheck 코드 #}
+
+{% macro form_icheck( type="", input, sizeType, colorType ) %}
+
+    {% if not sizeType %}
+        {% set sizeType = 1 %}
+    {% endif %}
+
+    {% if input.size %}
+        {% set sizeType = input.size %}
+    {% endif %}
+
+    {% if not colorType %}
+        {% set colorType = 'gray' %}
+    {% endif %}
+
+    {% if input.color %}
+        {% set colorType = input.color %}
+    {% endif %}
+
+    <div class="input">
+        <div class="input__icheck" {% if input.required %} data-required="required" {% endif %} {% if input.dataTitle %} data-title="{{ input.dataTitle }}" {% endif %}>
+            {% for icheck in input.icheck %}
+                {% set icheck = assign({
+                    id : '',
+                    type : type,
+                    name : input.name,
+                    class : ['o-input', BEM('o-input',null,type), BEM('o-input',null,type+'-'+sizeType), BEM('o-input',null,type+'-'+colorType)],
+                    checked : '',
+                    title : '',
+                    disabled : '',
+                    value : '',
+                    dataAttr : {}
+                },icheck) %}
+                <span class="input__item">
+				<input {{attr('type',icheck) | safe }} {{attr('id',icheck) | safe }} {{attr('class',icheck) | safe}} {{attr('value',icheck) | safe }} {{attr('name',icheck) | safe }} {{attr('title',icheck) | safe }} {{attr('checked',icheck) | safe }} {{attr('disabled',icheck) | safe }}  {{attr('dataAttr',icheck) | safe }}>
+				<label for="{{ icheck.id }}">{{ icheck.label | safe }}</label>
+			</span>
+            {% endfor %}
+
+        </div>
+        {% if caller %}
+            {{ caller() }}
+        {% endif %}
+    </div>
+
+{% endmacro %}
+
+
+
+{% macro form_input_basic() %}
+    <div class="row">
+        <label for="inp-num" class="row__label privilege__num">프리빌리지 번호</label>
+        <div class="col">
+            <div class="col__item">
+                {% call form.form_input( type="text", form_num ) %}
+                {% endcall %}
+            </div>
+        </div>
+        {% if validation %}
+            <div class="validation__text__wrap"></div>
+        {% endif %}
+    </div>
+{% endmacro %}

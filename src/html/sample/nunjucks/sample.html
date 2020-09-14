@@ -1,0 +1,95 @@
+{% extends "html/layout/layout.html" %}
+
+{#외부파일 가져와서 변수에 담기#}
+{#{% import "dependency/elements/combobox/index.html" as combobox %}#}
+
+{% block content %}
+{#    <h1 class="sample__title">[ cta ] 영역</h1>#}
+{#    <div class="sample__notice">#}
+{#        <ul class="sample__guide">#}
+{#            <li>outline type : default padding 17px 40px; long class 추가시 17px 80px;</li>#}
+{#        </ul>#}
+{#    </div>#}
+{#    <h2 class="sample__title--case">UNDERLINE</h2>#}
+{#    <div class="sample__code">#}
+{#    </div>#}
+
+    <h1 class="sample__title">Nunjucks</h1>
+    <div class="sample__notice">
+        <ul class="sample__guide">
+            <li>outline type : default padding 17px 40px; long class 추가시 17px 80px;</li>
+        </ul>
+    </div>
+    <section>
+        <h2 class="sample__title--case">typeA</h2>
+        <pre>
+    {{ '<p>{{ test }}</p>' | escape }}</pre>
+
+        <h2 class="sample__title--case">외부파일안에있는 macro 사용하기</h2>
+        <pre>
+    {{ '{% import "dependency/elements/basic/basic.html" as basic %}
+    {% call basic.h2() -%}
+        태그 불러오기
+    {%- endcall %}' | escape }}</pre>
+
+        <h2 class="sample__title--case">조건문 사용하기</h2>
+        <pre>
+    {{ '{% if type == 1 %}
+    {% elif type == 2 %}
+    {% else %}
+    {% endif %}' | escape }}</pre>
+        <h2 class="sample__title--case">반복문 사용하기</h2>
+        <pre>
+    {{ '<ul>
+            {% for item in itemList %}
+                {% if item.title %}
+                    <li class="item item-{{ loop.index }}">
+                        <dl>
+                            <dt>{{ item.description }}</dt>
+                            <dd>{{ item.title }}</dd>
+                        </dl>
+                    </li>
+                {% else %}
+                    <li class="item item-{{ loop.index }}">
+                        <dl>
+                            <dt>왜 없냐?</dt>
+                            <dd>타이틀 없음</dd>
+                        </dl>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    ' | escape }}</pre>
+        <ul>
+            {% for item in itemList %}
+                {% if item.title %}
+                    <li class="item item-{{ loop.index }}">
+                        <dl>
+                            <dt>{{ item.description }}</dt>
+                            <dd>{{ item.title }}</dd>
+                        </dl>
+                    </li>
+                {% else %}
+                    <li class="item item-{{ loop.index }}">
+                        <dl>
+                            <dt>왜 없냐?</dt>
+                            <dd>타이틀 없음</dd>
+                        </dl>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div>
+            {#{{ combobox.select( select_view, 2 ) }}#}
+        </div>
+    </section>
+{%- endblock %}
+
+{% block script %}
+    <script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
+    <script>
+        console.log('inline script coding');
+    </script>
+{% endblock %}

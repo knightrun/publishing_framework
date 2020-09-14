@@ -1,0 +1,90 @@
+// 다국어 작업 가능 예시
+
+@import "mixins/language/global/ko";
+@import "mixins/common/base";
+@import "mixins/common/options";
+
+@font-face {
+	font-family: 'Open Sans Regular';
+	font-style: normal;
+	font-weight: 300;
+	src: url("/dependency/fonts/OpenSansHeadKRRegular.eot");
+	src: local("※"),
+	url("/dependency/fonts/OpenSansHeadKRRegular.eot?#iefix") format("embedded-opentype"),
+	url("/dependency/fonts/OpenSansHeadKRRegular.woff") format("woff"),
+	url("/dependency/fonts/OpenSansHeadKRRegular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: 'Open Sans Medium';
+	font-style: normal;
+	font-weight: 400;
+	src: url("/dependency/fonts/OpenSansHeadKRMedium.eot");
+	src: local("※"),
+	url("/dependency/fonts/OpenSansHeadKRMedium.eot?#iefix") format("embedded-opentype"),
+	url("/dependency/fonts/OpenSansHeadKRMedium.woff") format("woff"),
+	url("/dependency/fonts/OpenSansHeadKRMedium.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: 'Open Sans Bold';
+	font-style: normal;
+	font-weight: 600;
+	src: url("/dependency/fonts/OpenSansHeadKRBold.eot");
+	src: local("※"),
+	url("/dependency/fonts/OpenSansHeadKRBold.eot?#iefix") format("embedded-opentype"),
+	url("/dependency/fonts/OpenSansHeadKRBold.woff") format("woff"),
+	url("/dependency/fonts/OpenSansHeadKRBold.ttf") format("truetype");
+}
+
+//@font-face {
+//  font-weight: 400;
+//  font-family: "Open Sans";
+//  src: url("/dependency/webfonts/en/OpenSans-Regular.woff2") format("woff2"),
+//  url("/dependency/webfonts/en/OpenSans-Regular.woff") format("woff");
+//}
+//
+//@font-face {
+//  font-weight: 600;
+//  font-family: "Open Sans Bold";
+//  src: url("/dependency/webfonts/en/OpenSans-Semibold.woff2") format("woff2"),
+//  url("/dependency/webfonts/en/OpenSans-Semibold.woff") format("woff");
+//}
+
+// zh
+// @include fontname('Noto-lang-Regular', 'NotoSansSC-Regular', '/dependency/webfonts/zh/');
+// @include fontname('Noto-lang-Bold', 'NotoSansSC-Medium', '/dependency/webfonts/zh/');
+
+// ja
+// @include fontname('Noto-lang-Regular', 'NotoSansJP-Regular', '/dependency/webfonts/ja/');
+// @include fontname('Noto-lang-Bold', 'NotoSansJP-Bold', '/dependency/webfonts/ja/');
+
+// ko
+// @include fontname('Noto-lang-Regular', 'notokr-regular', '/dependency/webfonts/ko/');
+// @include fontname('Noto-lang-Bold', 'notokr-medium', '/dependency/webfonts/ko/');
+
+// my
+// @include fontname('Noto-lang-Regular', 'NotoSansMyanmar-Regular', '/dependency/webfonts/my/');
+// @include fontname('Noto-lang-Bold', 'NotoSansMyanmar-Bold', '/dependency/webfonts/my/');
+
+$font : $basicfontset;
+$fontMedium : $basicfontsetMedium;
+$fontBold : $basicfontsetBold;
+
+* {
+	word-break: keep-all;
+	word-wrap: break-word;
+	font-family:$font;
+	margin:0;
+	padding:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	letter-spacing:-1px;
+	-webkit-font-smoothing:antialiased;
+}
+
+@include common();
+@include common_options-space();
+@include common_options-text();
+@include common_options-position();

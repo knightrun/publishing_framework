@@ -1,0 +1,99 @@
+{
+    "cta_1" : {
+        "type" : "learn",
+        "text" : "Learn More"
+    },
+    "cta_2" : {
+        "type" : "more",
+        "text" : "More"
+    },
+    "cta_3" : {
+        "type" : "back",
+        "text" : "Back to the list"
+    },
+    "cta_4" : {
+        "type" : "outline",
+        "long" : true,
+        "color" : "black",
+        "text" : "All Download"
+    },
+    "cta_4_1" : {
+        "type" : "outline",
+        "long" : true,
+        "color" : "white",
+        "text" : "All Download"
+    },
+    "cta_5" : {
+        "type" : "outlink",
+        "outlink_url" : "",
+        "color" : "black",
+        "text" : "Championship Standings"
+    },
+    "cta_5_1" : {
+        "type" : "outlink",
+        "color" : "white",
+        "text" : "Championship Standings"
+    },
+    "cta_6" : {
+        "type" : "tab",
+        "list" : [
+            {
+                "active" : true,
+                "text" : "Specification"
+            },
+            {
+                "text" : "Standard"
+            }
+        ]
+    },
+    "cta_7" : {
+        "type" : "toggle",
+        "color" : "black",
+        "list" : [
+            {
+                "active" : true,
+                "text" : "Open"
+            },
+            {
+                "active" : true,
+                "text" : "Close"
+            }
+        ]
+    },
+    "cta_8" : {
+        "type" : "toggle",
+        "color" : "white",
+        "list" : [
+            {
+                "active" : true,
+                "text" : "Open"
+            },
+            {
+                "active" : true,
+                "text" : "Close"
+            }
+        ]
+    },
+    "cta_9" : {
+        "type" : "youtube",
+        "text" : "play button",
+        "dataAttr" : {
+            "js" : "modal",
+            "url": "https://www.youtube.com/embed/bO-06o2zyQc?enablejsapi=1"
+        }
+    },
+    "cta_10" : {
+        "type" : "toggle2",
+        "list" : [
+            {
+                "status" :"open",
+                "text" : "Open"
+            },
+            {
+                "status" : "close",
+                "active" : true,
+                "text" : "Close"
+            }
+        ]
+    }
+}

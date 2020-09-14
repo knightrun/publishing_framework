@@ -1,0 +1,114 @@
+{% extends "html/layout/layout.html" %}
+
+
+{% macro accordian( opt ) %}
+    <div class="accordion-item" data-js="accordion" {% if opt.multi %}data-multi="{{ opt.multi }}"{% endif %}>
+        <button type="button" class="accordion-item__tit" data-js="accordion__anchor">제목</button>
+        <div class="accordion-item__cont" data-js="accordion__panel">
+            <div class="accordion-item__area">
+                <div class="par__area">
+                    내용
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="accordion-item__tit" data-js="accordion__anchor">제목</button>
+        <div class="accordion-item__cont" data-js="accordion__panel">
+            <div class="accordion-item__area">
+                <div class="par__area">
+                    내용
+                </div>
+            </div>
+        </div>
+    </div>
+{%  endmacro %}
+
+{% block content %}
+    <h1 class="sample__title">Accordion</h1>
+    <div class="_guide calendar__wrap">
+        <h1 class="_guide__h2">아코디언</h1>
+        <pre>
+{{
+'
+<!-- #js# /WEB_DEPENDENCY/scripts/ui/uiaccordion/UIAccordion.js -->
+<!-- #js# /WEB_DEPENDENCY/scripts/plugins/tweenmax/TweenMax.min.js -->
+　
+　
+<html>
+// Basic
+container : data-js="accordion",
+anchor : data-js="accordion__anchor",
+panel : data-js="accordion__panel"
+　
+// Multi
+data-js="accordion" + data-multi=true
+　
+　
+<css>
+[data-js="accordion__panel"]{
+	display:none;
+	overflow:hidden;
+
+	&.is-active{
+		display:block;
+	}
+}
+　
+　
+<js>
+$([data-js="accordion"]).accordion();
+　
+events - arguments ( index, anchor, panel )
+ACCORDION_OPEN_START,
+ACCORDION_OPEN_END //option 의 onCompleteAccordion 입력시 발생안됨,
+ACCORDION_CLOSE_START,
+ACCORDION_CLOSE_END //option 의 onCompleteAccordion 입력시 발생안됨
+'
+}}
+	</pre>
+
+        <h2 class="_guide__h4">type1 아코디언 기본</h2>
+        <div class="accordion">
+            {{ accordian() }}
+        </div>
+
+        <h2 class="_guide__h4">type2 아코디언 멀티</h2>
+        <div class="accordion">
+            {{ accordian( accordion ) }}
+        </div>
+
+        <h2 class="_guide__h4">type3 아코디언 in 아코디언</h2>
+        <div class="accordion">
+            <div class="accordion-item" data-js="accordion">
+                <button type="button" class="accordion-item__tit{% if obj.active %} js-drop--active{% endif %}" data-js="accordion__anchor">제목</button>
+                <div class="accordion-item__cont{% if obj.active %} js-drop--active{% endif %}" data-js="accordion__panel">
+                    <div class="accordion-item__area">
+                        <div class="par__area">
+                            {{ accordian() }}
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="accordion-item__tit{% if obj.active %} js-drop--active{% endif %}" data-js="accordion__anchor">제목</button>
+                <div class="accordion-item__cont{% if obj.active %} js-drop--active{% endif %}" data-js="accordion__panel">
+                    <div class="accordion-item__area">
+                        <div class="par__area">
+                            {{ accordian() }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{%- endblock %}
+
+{% block script %}
+    <script type="text/javascript" charset="utf-8" src="/dependency/scripts/plugins/TweenMax.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/dependency/scripts/plugins/accordion.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.accordion').find('[data-js="accordion"]').accordion();
+        })
+    </script>
+{% endblock %}

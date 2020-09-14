@@ -1,0 +1,68 @@
+{
+    "page" : "sample",
+    "page_title": "sample",
+    "layout" : {
+        "header": false,
+        "footer": false,
+        "class_container": "",
+        "class_main": "main",
+        "class_inner": "inner"
+    },
+    "seo" : {
+        "title" : "PAPERR",
+        "description" : "",
+        "keywords" : "",
+        "ogTitle" : "",
+        "ogDescription" : "",
+        "ogImage" : "",
+        "twitterCard" : "summary_large_image",
+        "twitterTitle" : "",
+        "twitterDescription" : "",
+        "twitterImage" : "",
+        "itemPropName" : "",
+        "itemPropDescription" : "",
+        "itemPropImage" : ""
+    },
+    "cssList" : ["customA,customB"],
+    "test" : "test text 4444444",
+    "itemList" : [
+        {
+            "title" : "타이틀",
+            "description" : "내용"
+        },
+        {
+            "title" : "타이틀",
+            "description" : "내용"
+        },
+        {
+            "title" : "",
+            "description" : "내용"
+        },
+        {
+            "title" : "타이틀",
+            "description" : "내용"
+        },
+        {
+            "title" : "타이틀",
+            "description" : "내용"
+        }
+    ],
+    "select_view" : {
+        "id" : "select-view",
+        "title" : "정렬순서",
+        "option" : [
+            {
+                "value" : "select_view_1",
+                "text" : "추천순"
+            },
+            {
+                "value" : "select_view_2",
+                "text" : "낮은 가격순"
+            },
+            {
+                "value" : "select_view_3",
+                "text" : "높은 가격순"
+            }
+        ]
+    }
+}

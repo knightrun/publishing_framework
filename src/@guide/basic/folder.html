@@ -1,0 +1,136 @@
+{% set guideMenuIndex = 0 %}
+{% set guideTitle = "기본가이드" %}
+{% set guideSubTitle = "폴더구조" %}
+
+
+{% extends "@guide/index.html" %}
+{% block body %}
+	<section class="code-section">
+		<h3 class="code-section__title">Html</h3>
+		<div class="code-section__content">
+			<div class="code-table">
+				<table>
+					<colgroup>
+						<col style="width:50%;">
+						<col style="width:50%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th>경로</th>
+						<th>설명</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>/html/page</td>
+						<td>산출물페이지</td>
+					</tr>
+					<tr>
+						<td>/html/sample</td>
+						<td>샘플페이지</td>
+					</tr>
+					<tr>
+						<td>/html/other</td>
+						<td>기타페이지</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<p><i class="fas fa-angle-right"></i>샘플페이지 : 페이지 내에서 사용할 마크업 샘플</p>
+			<p><i class="fas fa-angle-right"></i>기타페이지 : 페이지 외에 추가로 제공되는 마크업 목록</p>
+		</div>
+	</section>
+
+	<section class="code-section">
+		<h3 class="code-section__title">Css</h3>
+		<div class="code-section__content">
+			<div class="code-table">
+				<table>
+					<colgroup>
+						<col style="width:50%;">
+						<col style="width:50%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th>경로</th>
+						<th>설명</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>/css</td>
+						<td>해당 css</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<p><i class="fas fa-angle-right"></i>common, layout 공통이며 그 외에는 해당 페이지에 관련된 css 추가 노출</p>
+		</div>
+	</section>
+
+	<section class="code-section">
+		<h3 class="code-section__title">Js</h3>
+		<div class="code-section__content">
+			<div class="code-table">
+				<table>
+					<colgroup>
+						<col style="width:50%;">
+						<col style="width:50%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th>경로</th>
+						<th>설명</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>/dependency/scripts/common</td>
+						<td>공통 스크립트</td>
+					</tr>
+					<tr>
+						<td>/dependency/scripts/ie9</td>
+						<td>ie9관련 스크립트</td>
+					</tr>
+					<tr>
+						<td>/dependency/scripts/plugins</td>
+						<td>외부 플러그인</td>
+					</tr>
+					<tr>
+						<td>/dependency/scripts/ui</td>
+						<td>퍼블 제작 플러그인</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<p><i class="fas fa-angle-right"></i>단일페이지에서 사용되는 스크립트는 페이지 하단에 inline으로 작성</p>
+		</div>
+	</section>
+
+	<section class="code-section">
+		<h3 class="code-section__title">이미지</h3>
+		<div class="code-section__content">
+			<div class="code-table">
+				<table>
+					<colgroup>
+						<col style="width:50%;">
+						<col style="width:50%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th>경로</th>
+						<th>설명</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>/images</td>
+						<td>해당 이미지</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<p><i class="fas fa-angle-right"></i>각 메뉴별 폴더 구분</p>
+		</div>
+	</section>
+{% endblock %}

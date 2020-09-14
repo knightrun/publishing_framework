@@ -1,0 +1,58 @@
+// 다국어 작업 가능 예시
+
+@import "mixins/language/global/ko";
+@import "mixins/common/base";
+@import "mixins/common/options";
+
+
+@font-face {
+	font-weight: 400;
+	font-family: "Open Sans";
+	src: url("/dependency/webfonts/en/OpenSans-Regular.woff2") format("woff2"),
+	url("/dependency/webfonts/en/OpenSans-Regular.woff") format("woff");
+}
+
+@font-face {
+	font-weight: 600;
+	font-family: "Open Sans Bold";
+	src: url("/dependency/webfonts/en/OpenSans-Semibold.woff2") format("woff2"),
+	url("/dependency/webfonts/en/OpenSans-Semibold.woff") format("woff");
+}
+
+
+// zh
+// @include fontname('Noto-lang-Regular', 'NotoSansSC-Regular', '/dependency/webfonts/zh/');
+// @include fontname('Noto-lang-Bold', 'NotoSansSC-Medium', '/dependency/webfonts/zh/');
+
+// ja
+// @include fontname('Noto-lang-Regular', 'NotoSansJP-Regular', '/dependency/webfonts/ja/');
+// @include fontname('Noto-lang-Bold', 'NotoSansJP-Bold', '/dependency/webfonts/ja/');
+
+// ko
+@include fontname('Noto-lang-Regular', 'notokr-regular', '/dependency/webfonts/ko/');
+@include fontname('Noto-lang-Bold', 'notokr-medium', '/dependency/webfonts/ko/');
+
+// my
+// @include fontname('Noto-lang-Regular', 'NotoSansMyanmar-Regular', '/dependency/webfonts/my/');
+// @include fontname('Noto-lang-Bold', 'NotoSansMyanmar-Bold', '/dependency/webfonts/my/');
+
+$font : $basicfontset;
+$fontBold : $basicfontsetBold;
+
+* {
+	word-break: keep-all;
+	word-wrap: break-word;
+	font-family:$font;
+	margin:0;
+	padding:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	letter-spacing:-1px;
+	-webkit-font-smoothing:antialiased;
+}
+
+@include common();
+@include common_options-space();
+@include common_options-text();
+@include common_options-position();

@@ -1,0 +1,62 @@
+{% set guideMenuIndex = 2 %}
+{% set guideTitle = "페이지 리스트" %}
+{% set guideSubTitle = "페이지 리스트" %}
+
+
+{% extends "@guide/index.html" %}
+{% block body %}
+    {{ compNode | addGlobalVar('compNode') }}
+
+    {% set tmp =  _eval('_.each( env.vars.compNode, function( item ){
+        //console.log(item);
+	})') %}
+
+    {% set clearMemory = _eval('(function(){
+        delete env.vars.compNode;
+    }())') %}
+
+    {% for page in compNode %}
+        {% set totalLen = _.size( page.list )%}
+        <h3 class="pat30">{{ page.name }}</h3>
+        <div class="work-list">
+            <span class="work-count">Total : {{ totalLen }} </span>
+            <table>
+                <colgroup>
+                    <col style="width:5%"/>
+                    <col style="width:10%"/>
+                    <col style="width:5%"/>
+                    <col style="width:40%"/>
+                    <col style="width:20%"/>
+                    <col style="width:15%"/>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">페이지명</th>
+                    <th scope="col">진행상황</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">카테고리</th>
+                    <th scope="col">비고</th>
+                    {#<th scope="col">html-validator</th>#}
+                    {#<th scope="col">css-validator</th>#}
+                </tr>
+                </thead>
+                <tbody>
+                {% for nodelist in page.list %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ nodelist.base }}</td>
+                        <td>{% if nodelist.progress %} {{ nodelist.progress }} {% else %} 작업예정 {% endif %}</td>
+                        <td class="left"><a href="{{ nodelist.url }}" target="_blank">{{ nodelist.url }}</a></td>
+                        <td class="left">{% if nodelist.category %} {{ nodelist.category }}{% endif %}</td>
+                        <td>{% if nodelist.remarks %} {{ nodelist.remarks }}{% endif %}</td>
+                        {#<td class="preview"><a href="" target="_blank" title="새 창 링크">preview</a></td>#}
+                        {#<td><button type="button" class="html-validator">html-validator</button></td>#}
+                        {#<td><button type="button" class="css-validator">css-validator</button></td>#}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
+{% endblock %}
