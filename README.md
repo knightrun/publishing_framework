@@ -98,13 +98,13 @@ local : 2. run sass_watch
 ```
 
 ## Directory
-* ### /@guide
+* ### @guide
   - 가이드페이지에 관련 파일을 포함하는 디렉토리
   
-* ### /css
+* ### css
   - 스타일 관련 파일을 포함하는 디렉토리
   
-* ### /dependency
+* ### dependency
   - #### /elements
     + Nunjucks - macro 관련 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
   - #### /fonts
@@ -114,7 +114,7 @@ local : 2. run sass_watch
   - #### /styles
     + 공통 Sass - import, mixin 관련 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
     
-* ### /html
+* ### html
   - #### /common
     + 공통 HTML 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
   - #### /layout
