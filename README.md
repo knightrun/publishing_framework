@@ -10,7 +10,7 @@
 * [Sass](https://www.npmjs.com/package/node-sass)
 * [yarn](https://github.com/yarnpkg/yarn)
 
-## 설치
+## Installation
 ```javascript
 git clone 실행 후
 
@@ -23,113 +23,122 @@ yarn install or yarn
 
 **터미널에서 node-sass 에러가 발생했을때에는 node-sass를 별로도 설치해야 합니다.**
 ```javascript
+yarn add node-sass 
+
+또는
+
 npm install node-sass
 ```
 
 ## Task 
 ```bash
-# 웹서버 실행
+# 로컬서버 실행
 local : 1. run server
 
-# scss 파일의 변경을 감지하여 변경될 때마다 scss 파일을 컴파일하여 css 파일을 자동 업데이트
+# /src 폴더의 .scss의 변경을 감지하여 .css로 자동 변환 (.scss 새로 생성시 task restart)
 local : 2. run sass_watch
 
-# css폴더의 scss 파일을 컴파일하여 css 파일을 업데이트 (변경 감지x)
+# /src/css 폴더의 .scss를 css로 변환 (변경 감지x)
 local : sass - compile
 
-# sample폴더의 scss 파일을 컴파일하여 css 파일을 업데이트 (변경 감지x)
+# /src/html/sample 폴더의 .scss를 css로 변환 (변경 감지x)
 local : sass - compile_sample
 
-# 전체 파일 dist 디렉토리 배포 
+# /src/ 폴더의 전체파일을 /dist 디렉토리 배포 
 product : all
 
-# 정적페이지 관련파일 dist 디렉토리 배포
+# /src/html/page 관련 전체파일을 /dist 디렉토리로 배포
 product : build
 
-# 가이드페이지 관련파일 dist 디렉토리 배포
+# /src/@guide 관련 전체파일을 /dist 디렉토리로 배포
 product : build - guide
 
-# 기타페이지 관련파일 dist 디렉토리 배포
+# /src/html/other 관련 전체파일을 /dist 디렉토리로 배포
 product : build - other
 
-# 샘플페이지 관련파일 dist 디렉토리 배포
+# /src/html/sample 관련 전체파일을 /dist 디렉토리로 배포
 product : build - sample
 
-# css파일 dist 디렉토리 배포
+# /src의 .css를 /dist 디렉토리로 배포
 product : css
 
-# css파일 dist 디렉토리 배포후 코드 경량화 실행 (all.min.css)
+# /src의 .css를 /dist 디렉토리로 배포 후 코드 경량화 실행 (all.min.css)
 product : css - min
 
-# font파일 dist 디렉토리 배포
+# /src/dependency/font 폴더의 전체파일을 /dist 디렉토리로 배포
 product : font
 
-# html파일 dist 디렉토리 배포
+# /src/html/page 폴더의 .html만 /dist 디렉토리로 배포
 product : html
 
-# image파일 dist 디렉토리 배포
+# /src/image 폴더의 전체파일을 /dist 디렉토리로 배포
 product : image
 
-# js파일 dist 디렉토리 배포
+# /src/js 폴더와 /src/dependency/scripts 폴더의 전체파일을 /dist 디렉토리로 배포
 product : js
 
-# js파일 dist 디렉토리 배포 후 babel 실행
+# /src/js 폴더의 전체파일을 /dist 디렉토리로 배포 후 babel 실행
 product : js - babel
 
-# js파일 dist 디렉토리 배포 후 /min 폴더 생성후 파일명.min.js로 압축 
+# /src/js 폴더의 전체파일을 /dist 디렉토리로 배포 후 /min 하위 폴더 생성후 파일명.min.js로 압축 
 product : js - min
 
 # /min 폴더 지우기
 product : js - min_del
 
-# video파일 dist 디렉토리 배포
+# /src/videos 폴더의 .mp4를 /dist 디렉토리로 배포 (확장자 추가 가능)
 product : video
 ```
-**빌더 실행시 local : 1. run server, local : 2. run sass_watch를 실행하면 됩니다.** 
 
-## 디렉토리
+## Start the project
+```javascript
+local : 1. run server
 
-* ### @guide
+local : 2. run sass_watch
+```
+
+## Directory
+* ### /@guide
   - 가이드페이지에 관련 파일을 포함하는 디렉토리
   
-* ### css
+* ### /css
   - 스타일 관련 파일을 포함하는 디렉토리
   
-* ### dependency
-  - #### elements
-    + Nunjucks - macro 관련 파일을 포함하는 디렉토리
-  - #### fonts
+* ### /dependency
+  - #### /elements
+    + Nunjucks - macro 관련 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
+  - #### /fonts
     + 공통 폰트 파일을 포함하는 디렉토리
-  - #### scripts
+  - #### /scripts
     + 공통 스크립트 파일을 포함하는 디렉토리
-  - #### styles
-    + 공통 Sass - import, mixin 관련 파일을 포함하는 디렉토리
+  - #### /styles
+    + 공통 Sass - import, mixin 관련 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
     
-* ### html
-  - #### common
-    + 공통 HTML 파일을 포함하는 디렉토리
-  - #### layout
-    + 공통 레이아웃 HTML 파일을 포함하는 디렉토리
-  - #### page
+* ### /html
+  - #### /common
+    + 공통 HTML 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
+  - #### /layout
+    + 공통 레이아웃 HTML 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
+  - #### /page
     + 프로젝트 HTML 파일을 포함하는 디렉토리
-  - #### other
-    + 프로젝트 별도의 HTML 파일을 포함하는 디렉토리
-  - #### sample
+  - #### /other
+    + 프로젝트 외 별도의 HTML 파일을 포함하는 디렉토리
+  - #### /sample
     + 샘플페이지 HTML 파일을 포함하는 디렉토리
   
 * ### images
   - 이미지 파일을 포함하는 디렉토리
   
-* ### video
+* ### videos
   - 동영상 파일을 포함하는 디렉토리
   
 * ### js
-  - 정적 페이지 스크립트 파일을 포함하는 디렉토리
+  - 스크립트 파일을 포함하는 디렉토리
 
 * ### system
   - 빌더 관련 파일을 포함하는 디렉토리
   
-## 빌더 관련 스크립트
+## Builder
 * ### Gulpfile.babel.js     
   - relativePath : dist 디렉토리로 배포시 정적 페이지안의 css나 js같은 리소스 경로를 절대경로나 상대경로로 지정할 수 있습니다.
   
@@ -139,9 +148,9 @@ product : video
   - @guide/page에서 페이지를 각각 구분해주세요 예)page_ko.html, page_en.html
   - page의 코드에서 compNode를 각 코드에 맞게 바꿔주세요. 예)compNode.ko, compNode.en
       
-## 참고   
-* **html/page, html/other, html/sample에서는 HTML 생성 후 동일한 이름의 JSON도 같은 위치에 생성해주세요.**   
-* **dist 디렉토리 배포 명령을 실행했을 경우 dist 폴더가 자동생성됩니다.** 
+## Reference   
+* **html/page, html/other, html/sample에서는 HTML 생성 후 동일한 이름의 JSON도 같은 위치에 필수로 생성하게 제작되었습니다.**   
+* **dist 배포 명령을 실행했을 경우 /dist 폴더가 자동생성 되며 Nunjuck 템플릿이 HTML로 변환되어 배포 됩니다.** 
 * **샘플용 파일들이 첨부되어 있으며 사용하지 않는 파일은 삭제 해 주세요.** 
 * **개인용도로 제작된 프레임워크인 만큼 프로젝트에 맞게 프레임워크를 재구성 하여 사용하셔야 합니다.** 
 
