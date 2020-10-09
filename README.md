@@ -208,7 +208,7 @@ $.gulp.task('product_build_other', productBuildOther);
 $.gulp.task('product_build_sample', productBuildSample);
 ```
 
-> 모든 Task Name의 공백제거가 되지 않은 경우 아래의 형태의 경고를 띄운다.
+> 모든 Task Name의 공백이 제거 되지 않은 경우 아래의 에러 메세지 노출
 
 ```jsx
 Gulp Tasks: Command failed: gulp --tasks-simple --cwd "d:\publishing_framework-master" --gulpfile "d:\publishing_framework-master\gulpfile.babel.js"
