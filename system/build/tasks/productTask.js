@@ -157,7 +157,7 @@ export default ( $, options ) => {
             .pipe($.if($.relativePath, $.tap((file, t) => {
                 const filePath = file.path.replace(/\\/g, '/');
                 const path = filePath.substring(regex.exec(filePath).index);
-                const len = path.match(/\//g).length + 1;
+                const len = path.match(/\//g) ? path.match(/\//g).length + 1 : 1;
                 const returnPath = (() => {
                     let str = '';
                     let i = 0;

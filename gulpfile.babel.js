@@ -30,7 +30,7 @@ const plugins = gulpLoadPlugins({
 
 const $ = {
     ...plugins,
-    relativePath : true,
+    relativePath : false,
     pkg,
     gulp,
     path,

@@ -9,7 +9,6 @@
 		this.each(function() {
 			if ( !$.data( this, "plugin_" + pluginName ) ) {
 				$.data( this, "plugin_" + pluginName, new Plugin( this, options ) );
-				PUB.UI.log( '[bind] '+pluginName );
 			}
 		});
 
@@ -169,12 +168,11 @@
 				}
 
                 if(plugin.$element.closest('.c-modal').length){
-                    PUB.UI.elem.$win.trigger('resize');
+                    $(window).trigger('resize');
                 }
 
                 var $gnb = $('[data-js="gnb"]');
-                if(plugin.options.scrollTop && (btn.offset().top - $gnb.outerHeight()) - PUB.UI.elem.$win.scrollTop() < $gnb.outerHeight()){
-                    // PUB.UI.elem.$win.scrollTop( btn.offset().top - $('[data-js="gnb"]').outerHeight() );
+                if(plugin.options.scrollTop && (btn.offset().top - $gnb.outerHeight()) - $(window).scrollTop() < $gnb.outerHeight()){
                     $('html, body').stop().animate({scrollTop:btn.offset().top - $gnb.outerHeight()}, plugin.options.speed * 1000);
 				}
 			}
@@ -195,8 +193,6 @@
 				anchor: btn,
 				panel : cont
 			});
-
-			// plugin.options.scrollTop && PUB.UI.elem.$win.scrollTop( btn.offset().top - $('[data-js="gnb"]').outerHeight() );
 		},
 
 		dropdownClose : function( idx ){

@@ -139,8 +139,8 @@ local : 2. run sass_watch
   - 빌더 관련 파일을 포함하는 디렉토리
   
 ## Builder
-* ### Gulpfile.babel.js     
-  - relativePath : dist 디렉토리로 배포시 정적 페이지안의 css나 js같은 리소스 경로를 절대경로나 상대경로로 지정할 수 있습니다.
+* ### gulpfile.babel.js     
+  - relativePath : dist 디렉토리로 배포시 페이지안의 리소스 경로를 절대경로나 상대경로로 지정할 수 있습니다.
   
 * ### 다국어 프로젝트인 경우 가이드 페이지와 관련된 코드를 수정해주셔야 합니다.    
   - server.js에서 loadPreviewPath 로 실행되는 부분을 loadPreviewLanguagePath 함수로 바꿔 주세요. 
@@ -154,4 +154,58 @@ local : 2. run sass_watch
 * **샘플용 파일들이 첨부되어 있으며 사용하지 않는 파일은 삭제 해 주세요.** 
 * **개인용도로 제작된 프레임워크인 만큼 프로젝트에 맞게 프레임워크를 재구성 하여 사용하셔야 합니다.** 
 
+## Visual Studio Code 셋팅 방법   
+* **해당 프레임웍은 WebStorm으로 제작된 프레임웍이라 Visual Studio Code에서 실행할 경우 몇가지 작업을 추가로 해야합니다.**
 
+> gulp 라이브러리를 global로 설치
+```jsx
+npm install -g gulp
+
+또는
+
+yarn global add gulp
+```
+
+> Visual Studio Code 에서 Gulp Tasks 플러그인 설치
+
+왼쪽 화면에 Gulp Tasks 리스트 탭이 보이지 않는경우 Visual Studio Code를 종료 후 재시작 해주세요.
+
+> Task Name 공백제거
+
+/server/tasks/serverTask.js의 Task Name 공백제거
+
+```jsx
+예시
+$.gulp.task('local_1_run_server', $.gulp.series(serverNodeMon, serverBrowserSync));
+$.gulp.task('local_2_run_sass_watch', sassWatch);
+$.gulp.task('local_sass_compile', sassCompile);
+$.gulp.task('local_sass_compile_sample', sassCompileSample);
+```
+
+/build/tasks/productTask.js의 Task Name 공백제거
+
+```jsx
+예시
+$.gulp.task('product_build', $.gulp.parallel(productHtml, productCss, productJs, productImage, productFont, productVideo));
+$.gulp.task('product_all', $.gulp.parallel('product_build', productBuildSample, productBuildGuide, productBuildOther));
+$.gulp.task('product_html', productHtml);
+$.gulp.task('product_css', productCss);
+$.gulp.task('product_css_min', $.gulp.series(productCss, productCssMin));
+$.gulp.task('product_js', productJs);
+$.gulp.task('product_js_min', $.gulp.series($.gulp.parallel(productJsMinDel, productJs), productJsMin));
+$.gulp.task('product_js_min_del', productJsMinDel);
+$.gulp.task('product_js_babel', productJsBabel);
+$.gulp.task('product_image', productImage);
+$.gulp.task('product_font', productFont);
+$.gulp.task('product_video', productVideo);
+$.gulp.task('product_build_guide', productBuildGuide);
+$.gulp.task('product_build_other', productBuildOther);
+$.gulp.task('product_build_sample', productBuildSample);
+```
+
+> 모든 Task Name의 공백제거가 되지 않은 경우 아래의 형태의 경고를 띄운다.
+
+```jsx
+Gulp Tasks: Command failed: gulp --tasks-simple --cwd "d:\publishing_framework-master" --gulpfile "d:\publishing_framework-master\gulpfile.babel.js"
+AssertionError [ERR_ASSERTION] [ERR_ASSERTION]: Task never defined: product:build - did you mean? product_build
+```
