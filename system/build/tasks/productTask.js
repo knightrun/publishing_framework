@@ -252,9 +252,9 @@ export default ( $, options ) => {
 
     function productStaticCss(){
         return $.gulp
-            .src(options.paths.cssFile, {since: $.gulp.lastRun(productStaticCss)})
+            .src(options.paths.cssStaticFile, {since: $.gulp.lastRun(productStaticCss)})
             .pipe($.using())
-            .pipe($.gulp.dest(options.paths.distCss));
+            .pipe($.gulp.dest(options.paths.distStaticCss));
     }
 
     function productCss(){
@@ -549,11 +549,11 @@ export default ( $, options ) => {
         return $.merge( html, css, image );
     }
 
-    $.gulp.task('product : build', $.gulp.parallel(productHtml, $.gulp.series(productStaticCss, productCss), productJs, productImage, productFont, productVideo));
+    $.gulp.task('product : build', $.gulp.parallel(productHtml, productStaticCss, productCss, productJs, productImage, productFont, productVideo));
     $.gulp.task('product : all', $.gulp.parallel('product : build', productBuildSample, productBuildGuide, productBuildOther));
     $.gulp.task('product : html', productHtml);
-    $.gulp.task('product : css', $.gulp.series(productStaticCss, productCss));
-    $.gulp.task('product : css - min', $.gulp.series(productCss, productCssMin));
+    $.gulp.task('product : css', $.gulp.parallel(productStaticCss, productCss));
+    $.gulp.task('product : css - min', $.gulp.series($.gulp.parallel(productStaticCss, productCss), productCssMin));
     $.gulp.task('product : js', productJs);
     $.gulp.task('product : js - min', $.gulp.series($.gulp.parallel(productJsMinDel, productJs), productJsMin));
     $.gulp.task('product : js - min_del', productJsMinDel);

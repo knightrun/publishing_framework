@@ -64,7 +64,7 @@ product : build - sample
 # /src의 .css를 /dist 디렉토리로 배포
 product : css
 
-# /src의 .css를 /dist 디렉토리로 배포 후 코드 경량화 실행 (all.min.css)
+# /src의 .css를 /dist 디렉토리로 배포 후 모든 css 코드를 하나의 파일로 압축 (all.min.css)
 product : css - min
 
 # /src/dependency/font 폴더의 전체파일을 /dist 디렉토리로 배포
@@ -105,7 +105,9 @@ local : 2. run sass_watch
   
 * ### css
   - 스타일 관련 파일을 포함하는 디렉토리
-  
+  - #### /static
+    + plugin 관련 css나 static css 파일을 포함하는 디렉토리
+    
 * ### dependency
   - #### /elements
     + Nunjucks - macro 관련 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
@@ -154,6 +156,7 @@ local : 2. run sass_watch
       
 ## Reference   
 * html/page, html/other, html/sample에서는 HTML 생성 후 동일한 이름의 JSON도 같은 위치에 필수로 생성하게 제작되었습니다.  
+* scss가 아닌 plugin 관련 css나 static css는 반드시 css/static 안에 넣어주셔야 정상 배포 됩니다.
 * dist 배포 명령을 실행했을 경우 /dist 폴더가 자동생성 되며 Nunjuck 템플릿이 HTML로 변환되어 배포 됩니다. 
 * 샘플용 파일들이 첨부되어 있으며 사용하지 않는 파일은 삭제 해 주세요.
 * 개인용도로 제작된 프레임워크인 만큼 프로젝트에 맞게 프레임워크를 재구성 하여 사용하셔야 합니다.
