@@ -1,0 +1,42 @@
+//	description : 언어권별 공통 변수 정의
+
+// default settings
+
+$basicfontset : 'NotoSansKR', 'Malgun Gothic', sans-serif ;	// base font
+$basicMobfontsize : 16px;										// base font size
+$basicfontsize : 18px;										// base font size
+$basicfontcolor : #222;										// base font color
+$basic-line-height : 1.2;									// base line-height
+$basic-letter-spacing : 0;									// base letter-spacing
+
+
+// breakpoint
+
+$mob-s : 360px;
+$mob-l : 720px;
+$tablet : 721px;
+$tablet-l : 1024px;
+$desktop-s : 1280px;
+$desktop-m : 1440px;
+$desktop-l : 1680px;
+
+
+// point color
+
+$pointColor1 : #998465;
+$pointColor2 : #ef6600;
+$pointColor3 : #1b65b3;
+$pointColor4 : #ce8f5e;
+$backgroundColor : #eee;
+
+
+// language
+
+$langKR : $basicfontset;
+
+// $langEN : 'default', 'Malgun Gothic', sans-serif;	                            // 영어 폰트
+// $langJP : 'default', 'Microsoft Yahei', '微软雅黑', 'Simsun', '宋体', arial;	    // 일본어 폰트
+// $langCN : 'default', 'Malgun Gothic', sans-serif;	                            // 중국어 폰트
+// $langMM : 'default', 'zawgyione', arial, sans-serif;	                            // 미얀마 폰트
+// $langVN : 'default', arial, sans-serif;	                                        // 베트남 폰트
+// $langRU : 'default', sans-serif;	                                                // 러시아 폰트

@@ -101,10 +101,6 @@
 			}
 		}
 	}
-
-	.common-text--bold{
-		@include fontBoldset();
-	}
 }
 
 @mixin common_options-position() {
@@ -132,9 +128,6 @@
 		text-align:center;
 	}
 
-	.text--point-color--1 {
-		color:$pointColor1;
-	}
 
 	/* IR */
 	.screen--out {
@@ -146,6 +139,7 @@
 		clip:rect(0 0 0 0);
 		overflow:hidden
 	}
+
 	span {
 		&.mblock {
 			display: block;
@@ -181,19 +175,4 @@
 		display:block;
 		min-height:1px;
 	}
-
-	/* position align */
-	.pos--static {
-		position: static;
-	}
-	.pos--relative {
-		position: relative;
-	}
-	.pos--absolute {
-		position: absolute;
-	}
-	.pos--fixed {
-		position: fixed;
-	}
-
 }

@@ -1,4 +1,4 @@
-@import "mixins/language/global/ko";
+@import "language/global/ko";
 
 .sample {
     &__title {
@@ -127,8 +127,6 @@
         }
 
         span{
-            @include fontBoldset();
-
             color:#555;
             font-size:12px;
             @include breakpoint($point: tablet-l) {

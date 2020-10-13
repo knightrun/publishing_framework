@@ -4,7 +4,7 @@ import {loadPreviewLanguagePath, loadPreviewPath as previewPath} from "../../ser
 export default ( $, options ) => {
 
     envSet($);
-
+    //배너 정보를 css에 추가하려면 $.header 주석 제거
     const banner = [
         "/**",
         " * @project        <%= pkg.name %>",
@@ -19,10 +19,37 @@ export default ( $, options ) => {
 
     const scssOptions = {
         includePaths : [options.paths.dependencyStyle],
+        /*
+            outputStyle (Type : String , Default : nested)
+            CSS의 컴파일 결과 코드스타일 지정
+            Values :
+                nested : 계층 구조시 ul 보다 ul li 앞에 공백이 더 있다는 것이 특징,
+                expanded : 계층 구조라 하더라도 선택자 앞에, 즉 ul li 앞에 공백이 없음,
+                compact : 선언이 여러 개 있어도 줄바꿈을 하지 않음,
+                compressed :불필요한 공백을 모두 제거
+        */
         outputStyle : 'expanded',
+        /*
+            indentType (>= v3.0.0 , Type : String , Default : space)
+            컴파일 된 CSS의 "들여쓰기" 의 타입
+            Values : space , tab
+        */
         indentType : 'tab',
+        /*
+           indentWidth (>= v3.0.0, Type : Integer , Default : 2)
+           컴파일 된 CSS의 "들여쓰기" 의 갯수
+        */
         indentWidth : 1, // outputStyle 이 nested, expanded 인 경우에 사용
+        /*
+            precision (Type : Integer , Default : 5)
+            컴파일 된 CSS 의 소수점 자리수.
+        */
         precision: 2,
+        /*
+            sourceComments (Type : Boolean , Default : false)
+            컴파일 된 CSS 에 원본소스의 위치와 줄수 주석표시.
+            sourceMaps 를 사용한다면 굳이 sourceComments를 사용할 필요는 없음
+        */
         sourceComments: false
     };
 
@@ -223,6 +250,13 @@ export default ( $, options ) => {
         return build;
     }
 
+    function productStaticCss(){
+        return $.gulp
+            .src(options.paths.cssFile, {since: $.gulp.lastRun(productStaticCss)})
+            .pipe($.using())
+            .pipe($.gulp.dest(options.paths.distCss));
+    }
+
     function productCss(){
         $.fancyLog("-> Building Product Sass To Css");
 
@@ -235,7 +269,7 @@ export default ( $, options ) => {
             .pipe($.sass(scssOptions).on('error', $.sass.logError))
             .pipe($.using())
             .pipe($.autoprefixer({remove: false}))
-            .pipe($.header(banner, {pkg: $.pkg}))
+            // .pipe($.header(banner, {pkg: $.pkg}))
             .pipe($.if($.relativePath, $.tap((file, t) => {
                 const filePath = file.path.replace(/\\/g, '/');
                 const path = filePath.substring(regex.exec(filePath).index);
@@ -292,7 +326,7 @@ export default ( $, options ) => {
                 minifyFontValues: true,
                 minifySelectors: true
             }))
-            .pipe($.header(banner, {pkg: $.pkg}))
+            // .pipe($.header(banner, {pkg: $.pkg}))
             .pipe($.using())
             .pipe($.gulp.dest(options.paths.distCss));
     }
@@ -515,10 +549,10 @@ export default ( $, options ) => {
         return $.merge( html, css, image );
     }
 
-    $.gulp.task('product : build', $.gulp.parallel(productHtml, productCss, productJs, productImage, productFont, productVideo));
+    $.gulp.task('product : build', $.gulp.parallel(productHtml, $.gulp.series(productStaticCss, productCss), productJs, productImage, productFont, productVideo));
     $.gulp.task('product : all', $.gulp.parallel('product : build', productBuildSample, productBuildGuide, productBuildOther));
     $.gulp.task('product : html', productHtml);
-    $.gulp.task('product : css', productCss);
+    $.gulp.task('product : css', $.gulp.series(productStaticCss, productCss));
     $.gulp.task('product : css - min', $.gulp.series(productCss, productCssMin));
     $.gulp.task('product : js', productJs);
     $.gulp.task('product : js - min', $.gulp.series($.gulp.parallel(productJsMinDel, productJs), productJsMin));

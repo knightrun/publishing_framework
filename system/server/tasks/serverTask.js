@@ -6,7 +6,11 @@ export default function( $, options ) {
         /*
             outputStyle (Type : String , Default : nested)
             CSS의 컴파일 결과 코드스타일 지정
-            Values : nested, expanded, compact, compressed
+            Values :
+                nested : 계층 구조시 ul 보다 ul li 앞에 공백이 더 있다는 것이 특징,
+                expanded : 계층 구조라 하더라도 선택자 앞에, 즉 ul li 앞에 공백이 없음,
+                compact : 선언이 여러 개 있어도 줄바꿈을 하지 않음,
+                compressed :불필요한 공백을 모두 제거
         */
         outputStyle : "expanded",
         /*

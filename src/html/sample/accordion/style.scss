@@ -2,7 +2,7 @@
 
 $compName : 'accordion';
 
-@import 'mixins/language/global/ko';
+@import 'language/global/ko';
 
 /* mobile, tablet, desktop */
 $acc__offImg : './images/ico-plus.png';
@@ -38,7 +38,6 @@ $acc__onImg : './images/ico-minus.png';
             padding:23px 50px 23px 15px;
             font-size:14px;
             line-height:25px;
-            @include fontBoldset();
             @include breakpoint($point: tablet) {
                 padding:23px 50px 23px 30px;
                 line-height:32px;

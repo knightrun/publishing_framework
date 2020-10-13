@@ -151,18 +151,9 @@
 		margin: 0;
 		padding: 0;
 		border: 0;
-		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
 		outline: none;
-	}
-
-    .text__weight--bold{
-        @include fontBoldset();
-    }
-
-	.text__weight--Medium{
-		@include fontMediumset();
 	}
 
 	.skip {
@@ -193,7 +184,7 @@
 		text-align:center;
 		font-size:$basicfontsize;
 		color:#fff;
-		background:#341d17;
+		background:$backgroundColor;
 	}
 }
 
