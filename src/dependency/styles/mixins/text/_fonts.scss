@@ -9,9 +9,9 @@
 		font-family: $fontFamily;
 		//src: url($fonturl + $fontfile + ".eot");
 		//src: url($fonturl + $fontfile + ".eot#iefix") format('embedded-opentype'),
-		//src : url($fonturl + $fontfile + ".woff2") format('woff2'),
 		src : url($fonturl + $fontfile + ".woff") format('woff'),
-		url($fonturl + $fontfile + ".ttf") format('truetype');
+		url($fonturl + $fontfile + ".woff2") format('woff2');
+			//url($fonturl + $fontfile + ".ttf") format('truetype');
 		font-weight: $weight;
 	}
 }
