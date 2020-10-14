@@ -1,4 +1,13 @@
 @mixin common(){
+	* {
+		word-break: keep-all;
+		word-wrap: break-word;
+		font-family:$basicfontset;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		-webkit-font-smoothing:antialiased;
+	}
 
 	html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, form, fieldset, input, table, tr, th, td, button, textarea, select {
 		margin:0;
@@ -9,7 +18,7 @@
 		margin:0;
 		padding:0;
 		font : {
-			family:$font;
+			family:$basicfontset;
 			size:$basicMobfontsize;
 		}
 		@include breakpoint($point: tablet-l) {
@@ -85,7 +94,7 @@
 
 
 	input {
-		font-family: $font;
+		font-family: $basicfontset;
 	}
 
 	label {
@@ -101,7 +110,7 @@
 		background:transparent;
 		cursor:pointer;
 		vertical-align:middle;
-		font-family:$font;
+		font-family:$basicfontset;
 		font-size:$basicMobfontsize;
 		@include breakpoint($point: tablet) {
 			font-size:$basicfontsize;

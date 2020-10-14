@@ -77,20 +77,42 @@ export default function( $, options ) {
 
     function sassCompileSample(){
         return $.gulp
-            .src(options.paths.scssSampleFile, {base: './',  since: $.gulp.lastRun(sassCompileSample)})
+            .src(options.paths.scssSampleFile, { base: './',  since: $.gulp.lastRun(sassCompileSample) })
             .pipe($.plumber({errorHandler: onError}))
             .pipe($.sass(scssOptions).on('error', $.sass.logError))
             .pipe($.using())
             .pipe($.gulp.dest('./'));
     }
 
+    function sassCompileDependency(){
+        const css = $.gulp
+            .src(options.paths.scssFile, { sourcemaps: true })
+            .pipe($.plumber({errorHandler: onError}))
+            // SCSS 작성시 watch 가 멈추지 않도록 logError 를 설정
+            .pipe($.sass(scssOptions).on('error', $.sass.logError))
+            .pipe($.using())
+            .pipe($.autoprefixer({remove: false}))
+            // 소스맵을 사용
+            .pipe($.gulp.dest(options.paths.css, { sourcemaps: true}));
+
+        const sample = $.gulp
+            .src(options.paths.scssSampleFile, { base: './' })
+            .pipe($.plumber({errorHandler: onError}))
+            .pipe($.sass(scssOptions).on('error', $.sass.logError))
+            .pipe($.using())
+            .pipe($.gulp.dest('./'));
+
+        return $.merge( css, sample );
+    }
+
     function sassWatch(){
+        $.gulp.watch(options.paths.dependencyStyleFile, sassCompileDependency);
         $.gulp.watch(options.paths.scssFile, sassCompile);
         $.gulp.watch(options.paths.scssSampleFile, sassCompileSample);
     }
 
-    $.gulp.task('local : 1. run server', $.gulp.series(serverNodeMon, serverBrowserSync));
-    $.gulp.task('local : 2. run sass_watch', sassWatch);
-    $.gulp.task('local : sass - compile', sassCompile);
-    $.gulp.task('local : sass - compile_sample', sassCompileSample);
+    $.gulp.task('dev_run-server', $.gulp.series(serverNodeMon, serverBrowserSync));
+    $.gulp.task('dev_run-sass-watch', sassWatch);
+    $.gulp.task('dev_sass-compile', sassCompile);
+    $.gulp.task('dev_sass-compile-sample', sassCompileSample);
 }

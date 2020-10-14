@@ -37,6 +37,7 @@ const obj = {
     videoFile : path.join(root,`/src/videos/**/*.mp4`),
     dependency : path.join(root,`/src/dependency`),
     dependencyStyle : path.join(root,`/src/dependency/styles`),
+    dependencyStyleFile : path.join(root,`/src/dependency/styles/**/*.scss`).replace(/\\/g, '/'),
     dependencyScript : path.join(root,`/src/dependency/scripts`),
     dependencyScriptFile : path.join(root,`/src/dependency/scripts/**/*.js`),
     dependencyFont : path.join(root,`/src/dependency/fonts/**/*.*`),

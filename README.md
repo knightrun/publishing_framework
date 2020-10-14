@@ -34,69 +34,76 @@ npm install node-sass
 
 ## Task 
 ```bash
-# 로컬서버 실행
-local : 1. run server
+========== 개발 서버 ==========
+
+# 서버 실행
+dev_run-server
 
 # /src 폴더의 .scss의 변경을 감지하여 .css로 자동 변환 (.scss 새로 생성시 task restart)
-local : 2. run sass_watch
+dev_run-sass-watch
 
 # /src/css 폴더의 .scss를 css로 변환 (변경 감지x)
-local : sass - compile
+dev_sass-compile
 
 # /src/html/sample 폴더의 .scss를 css로 변환 (변경 감지x)
-local : sass - compile_sample
+dev_sass-compile-sample
+
+
+========== 전체 빌드 ==========
 
 # /src/ 폴더의 전체파일을 /dist 디렉토리 배포 
-product : all
+product_all
 
 # /src/html/page 관련 전체파일을 /dist 디렉토리로 배포
-product : build
-
-# /src/@guide 관련 전체파일을 /dist 디렉토리로 배포
-product : build - guide
-
-# /src/html/other 관련 전체파일을 /dist 디렉토리로 배포
-product : build - other
+product_build
 
 # /src/html/sample 관련 전체파일을 /dist 디렉토리로 배포
-product : build - sample
+product_build-sample
 
-# /src의 .css를 /dist 디렉토리로 배포
-product : css
+# /src/html/other 관련 전체파일을 /dist 디렉토리로 배포
+product_build-other
 
-# /src의 .css를 /dist 디렉토리로 배포 후 모든 css 코드를 하나의 파일로 압축 (all.min.css)
-product : css - min
+# /src/@guide 관련 전체파일을 /dist 디렉토리로 배포
+product_build-guide
 
-# /src/dependency/font 폴더의 전체파일을 /dist 디렉토리로 배포
-product : font
+
+========== 개별 빌드 ==========
 
 # /src/html/page 폴더의 .html만 /dist 디렉토리로 배포
-product : html
+product_html
 
-# /src/image 폴더의 전체파일을 /dist 디렉토리로 배포
-product : image
+# /src의 .css를 /dist 디렉토리로 배포
+product_css
+
+# /src의 .css를 /dist 디렉토리로 배포 후 모든 css 코드를 하나의 파일로 압축 (all.min.css)
+product_css-min
 
 # /src/js 폴더와 /src/dependency/scripts 폴더의 전체파일을 /dist 디렉토리로 배포
-product : js
-
-# /src/js 폴더의 전체파일을 /dist 디렉토리로 배포 후 babel 실행
-product : js - babel
+product_js
 
 # /src/js 폴더의 전체파일을 /dist 디렉토리로 배포 후 /min 하위 폴더 생성후 파일명.min.js로 압축 
-product : js - min
+product_js-min
 
 # /min 폴더 지우기
-product : js - min_del
+product_js-min-del
+
+# /src/js 폴더의 전체파일을 /dist 디렉토리로 배포 후 babel 실행
+product_js-babel
+
+# /src/dependency/font 폴더의 전체파일을 /dist 디렉토리로 배포
+product_font
+
+# /src/image 폴더의 전체파일을 /dist 디렉토리로 배포
+product_image
 
 # /src/videos 폴더의 .mp4를 /dist 디렉토리로 배포 (확장자 추가 가능)
-product : video
+product_video
 ```
 
 ## Start the project
-```javascript
-local : 1. run server
-
-local : 2. run sass_watch
+```bash
+1. dev_run-server
+2. dev_run-sass-watch
 ```
 
 ## Directory
@@ -163,7 +170,7 @@ local : 2. run sass_watch
 ***
 
 ## Visual Studio Code 셋팅 방법   
-* **해당 프레임웍은 WebStorm으로 제작된 프레임웍이라 Visual Studio Code에서 실행할 경우 몇가지 작업을 추가로 해야합니다.**
+* **Visual Studio Code에서 실행할 경우 몇가지 작업을 추가로 해야합니다.**
 
 > gulp 라이브러리를 global로 설치
 ```jsx
@@ -177,43 +184,3 @@ yarn global add gulp
 > Visual Studio Code 에서 Gulp Tasks 플러그인 설치
 
 왼쪽 화면에 Gulp Tasks 리스트 탭이 보이지 않는경우 Visual Studio Code를 종료 후 재시작 해주세요.
-
-> Task Name 공백제거
-
-/server/tasks/serverTask.js의 Task Name 공백제거
-
-```jsx
-예시
-$.gulp.task('local_1_run_server', $.gulp.series(serverNodeMon, serverBrowserSync));
-$.gulp.task('local_2_run_sass_watch', sassWatch);
-$.gulp.task('local_sass_compile', sassCompile);
-$.gulp.task('local_sass_compile_sample', sassCompileSample);
-```
-
-/build/tasks/productTask.js의 Task Name 공백제거
-
-```jsx
-예시
-$.gulp.task('product_build', $.gulp.parallel(productHtml, productCss, productJs, productImage, productFont, productVideo));
-$.gulp.task('product_all', $.gulp.parallel('product_build', productBuildSample, productBuildGuide, productBuildOther));
-$.gulp.task('product_html', productHtml);
-$.gulp.task('product_css', productCss);
-$.gulp.task('product_css_min', $.gulp.series(productCss, productCssMin));
-$.gulp.task('product_js', productJs);
-$.gulp.task('product_js_min', $.gulp.series($.gulp.parallel(productJsMinDel, productJs), productJsMin));
-$.gulp.task('product_js_min_del', productJsMinDel);
-$.gulp.task('product_js_babel', productJsBabel);
-$.gulp.task('product_image', productImage);
-$.gulp.task('product_font', productFont);
-$.gulp.task('product_video', productVideo);
-$.gulp.task('product_build_guide', productBuildGuide);
-$.gulp.task('product_build_other', productBuildOther);
-$.gulp.task('product_build_sample', productBuildSample);
-```
-
-> 모든 Task Name의 공백이 제거 되지 않은 경우 아래의 에러 메세지 노출
-
-```jsx
-Gulp Tasks: Command failed: gulp --tasks-simple --cwd "d:\publishing_framework-master" --gulpfile "d:\publishing_framework-master\gulpfile.babel.js"
-AssertionError [ERR_ASSERTION] [ERR_ASSERTION]: Task never defined: product:build - did you mean? product_build
-```

@@ -1,22 +1,8 @@
-@import "language/global/ko";
-@import "mixins/common/base";
-@import "mixins/common/options";
-@import "mixins/text/fonts";
+@import "language/ko";
 
 @include fontname('NotoSansKR', 'NotoSansKR-Regular', '/dependency/fonts/', 400);
 @include fontname('NotoSansKR', 'NotoSansKR-Bold', '/dependency/fonts/', 500);
 
-$font : $basicfontset;
-
-* {
-  word-break: keep-all;
-  word-wrap: break-word;
-  font-family:$font;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-font-smoothing:antialiased;
-}
-
 @include common();
 @include common_options-position();
+@include pagination();

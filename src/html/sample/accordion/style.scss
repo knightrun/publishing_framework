@@ -1,8 +1,6 @@
-@import "mixins/language/global/en";
+@import 'language/ko';
 
 $compName : 'accordion';
-
-@import 'language/global/ko';
 
 /* mobile, tablet, desktop */
 $acc__offImg : './images/ico-plus.png';

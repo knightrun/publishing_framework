@@ -549,19 +549,20 @@ export default ( $, options ) => {
         return $.merge( html, css, image );
     }
 
-    $.gulp.task('product : build', $.gulp.parallel(productHtml, productStaticCss, productCss, productJs, productImage, productFont, productVideo));
-    $.gulp.task('product : all', $.gulp.parallel('product : build', productBuildSample, productBuildGuide, productBuildOther));
-    $.gulp.task('product : html', productHtml);
-    $.gulp.task('product : css', $.gulp.parallel(productStaticCss, productCss));
-    $.gulp.task('product : css - min', $.gulp.series($.gulp.parallel(productStaticCss, productCss), productCssMin));
-    $.gulp.task('product : js', productJs);
-    $.gulp.task('product : js - min', $.gulp.series($.gulp.parallel(productJsMinDel, productJs), productJsMin));
-    $.gulp.task('product : js - min_del', productJsMinDel);
-    $.gulp.task('product : js - babel', productJsBabel);
-    $.gulp.task('product : image', productImage);
-    $.gulp.task('product : font', productFont);
-    $.gulp.task('product : video', productVideo);
-    $.gulp.task('product : build - guide', productBuildGuide);
-    $.gulp.task('product : build - other', productBuildOther);
-    $.gulp.task('product : build - sample', productBuildSample);
+    $.gulp.task('product_all', $.gulp.parallel(productHtml, productStaticCss, productCss, productJs, productImage, productFont, productVideo, productBuildSample, productBuildGuide, productBuildOther));
+    $.gulp.task('product_build', $.gulp.parallel(productHtml, productStaticCss, productCss, productJs, productImage, productFont, productVideo));
+    $.gulp.task('product_build-sample', productBuildSample);
+    $.gulp.task('product_build-other', productBuildOther);
+    $.gulp.task('product_build-guide', productBuildGuide);
+    $.gulp.task('product_html', productHtml);
+    $.gulp.task('product_css', $.gulp.parallel(productStaticCss, productCss));
+    $.gulp.task('product_css-min', $.gulp.series($.gulp.parallel(productStaticCss, productCss), productCssMin));
+    $.gulp.task('product_js', productJs);
+    $.gulp.task('product_js-min', $.gulp.series($.gulp.parallel(productJsMinDel, productJs), productJsMin));
+    $.gulp.task('product_js-min-del', productJsMinDel);
+    $.gulp.task('product_js-babel', productJsBabel);
+    $.gulp.task('product_font', productFont);
+    $.gulp.task('product_image', productImage);
+    $.gulp.task('product_video', productVideo);
+
 }
