@@ -173,12 +173,15 @@ product_video
 * **Visual Studio Code에서 실행할 경우 몇가지 작업을 추가로 해야합니다.**
 
 > gulp 라이브러리를 global로 설치
-```jsx
+```bash
 npm install -g gulp
 
 또는
 
 yarn global add gulp
+
+yarn 으로 설치시 아래와 같은 메시지와 함께 task 목록이 나타나지 않는경우 npm 으로 설치해주세요.
+# Gulp Tasks: Command failed: gulp --tasks-simple --cwd 
 ```
 
 > Visual Studio Code 에서 Gulp Tasks 플러그인 설치
