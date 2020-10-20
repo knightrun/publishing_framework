@@ -1,6 +1,5 @@
 # 퍼블리싱 프레임워크 
 > 자바스크립트 템플릿 엔진을 사용하여 보다 정교하고 다양한 웹 페이지 제작을 위한 오픈소스 퍼블리싱 프레임워크입니다.
-***
 
 ## 구성요소
 * [Node.js 12.x](https://nodejs.org/ko/)
@@ -149,17 +148,6 @@ product_video
   - 빌더 관련 파일을 포함하는 디렉토리
 ***
 
-## Builder
-* ### gulpfile.babel.js     
-  - relativePath : dist 디렉토리로 배포시 페이지안의 리소스 경로를 절대경로나 상대경로로 지정할 수 있습니다.
-  
-* ### 다국어 프로젝트인 경우 가이드 페이지와 관련된 코드를 수정해주셔야 합니다.    
-  - server.js에서 loadPreviewPath 로 실행되는 부분을 loadPreviewLanguagePath 함수로 바꿔 주세요. 
-  - nodePath.js에서 loadPreviewLanguagePath 함수부분을 다국어에 맞춰서 Object를 수정해주세요.
-  - @guide/page에서 페이지를 각각 구분해주세요 예)page_ko.html, page_en.html
-  - page의 코드에서 compNode를 각 코드에 맞게 바꿔주세요. 예)compNode.ko, compNode.en
-***
-      
 ## Reference   
 * 다수의 레이아웃 제작 할 수 있으며 페이지에서 필요한 레이아웃을 선언하여 사용 가능합니다. 
 * src/html 디렉토리의 모든 html파일에서 동일한 이름의 json 파일을 동일한 경로에 생성한 경우 json에 입력한 데이터가 자동으로 html로 로드되며 템플릿 문법으로 출력 가능합니다.
@@ -191,6 +179,17 @@ product_video
 }
 ```
 
+## Builder
+* ### gulpfile.babel.js     
+  - relativePath : dist 디렉토리로 배포시 페이지안의 리소스 경로를 절대경로나 상대경로로 지정할 수 있습니다.
+  
+* ### 다국어 프로젝트인 경우 가이드 페이지와 관련된 코드를 수정해주셔야 합니다.    
+  - server.js에서 loadPreviewPath 로 실행되는 부분을 loadPreviewLanguagePath 함수로 바꿔 주세요. 
+  - nodePath.js에서 loadPreviewLanguagePath 함수부분을 다국어에 맞춰서 Object를 수정해주세요.
+  - @guide/page에서 페이지를 각각 구분해주세요 예)page_ko.html, page_en.html
+  - page의 코드에서 compNode를 각 코드에 맞게 바꿔주세요. 예)compNode.ko, compNode.en
+***
+      
 ## Visual Studio Code 셋팅 방법 
   
 > gulp 라이브러리를 global로 설치
