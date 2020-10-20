@@ -89,7 +89,7 @@ function severSet( $, options ){
                     jsonData.otherNode = data3;
 
                 }else{
-                    jsonData = '';
+                    jsonData = {};
                 }
                 // console.log(`dont't file exists`);
             }

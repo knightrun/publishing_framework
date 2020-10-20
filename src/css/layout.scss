@@ -3,11 +3,29 @@
 }
 
 .header{
+    h2{
+        @include vw('font-size',24px, $mob-s);
+        font-weight: 400;
+
+        @include breakpoint($point: tablet-l) {
+            font-size: 32px;
+            font-weight: 500;
+        }
+    }
 }
 
 #main{
+
 }
 
 .footer{
+    color: #fff;
+    background-color: #222;
+    @include vw('padding-top', 10px, $mob-s);
+    @include vw('padding-bottom', 10px, $mob-s);
+
+    @include breakpoint($point: tablet-l) {
+        padding: 15px 0;
+    }
 }
 

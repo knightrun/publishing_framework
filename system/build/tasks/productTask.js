@@ -110,7 +110,7 @@ export default ( $, options ) => {
                 const data3 = previewPath($, options, glob3);
                 jsonData.otherNode = data3;
             }else{
-                jsonData = '';
+                jsonData = {};
             }
         }
         return jsonData;

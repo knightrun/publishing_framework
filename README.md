@@ -1,6 +1,5 @@
 # 퍼블리싱 프레임워크 
-템플릿 엔진을 사용하여 보다 정교하고 다양한 퍼블리싱을 위한 오픈소스 프레임워크입니다. 다수의 레이아웃 제작 할 수 있으며 extends 하여 페이지내에서 사용 가능합니다. 공통으로 사용되는 코드나 컴포넌트를 /dependency/elements에서 제작 후 import 하여 재사용 가능합니다. json에 있는 데이터는 자동으로 html로 로드되어 
-템플릿 문법으로 출력 가능합니다. 최종소스는 템플릿 소스를 일반적인 퍼블리싱 소스로 변환되어 제공됩니다. 또한 웹서버 실행시 가이드 페이지로 접속되며 가이드의 정적 페이지를 수정하여 산출물 가이드로 사용할 수 있습니다. 
+> 자바스크립트 템플릿 엔진을 사용하여 보다 정교하고 다양한 웹 페이지 제작을 위한 오픈소스 퍼블리싱 프레임워크입니다.
 ***
 
 ## 구성요소
@@ -162,16 +161,38 @@ product_video
 ***
       
 ## Reference   
-* html/page, html/other, html/sample에서는 HTML 생성 후 동일한 이름의 JSON도 같은 위치에 필수로 생성하게 제작되었습니다.  
+* 다수의 레이아웃 제작 할 수 있으며 페이지에서 필요한 레이아웃을 선언하여 사용 가능합니다. 
+* src/html 디렉토리의 모든 html파일에서 동일한 이름의 json 파일을 동일한 경로에 생성한 경우 json에 입력한 데이터가 자동으로 html로 로드되며 템플릿 문법으로 출력 가능합니다.
+* json 파일에서 guide나 layout 관련 옵션을 설정할 수 있으며 json 파일을 생성 하지 않은 경우 header 와 footer가 import 되지 않습니다.  
+* 공통으로 사용되는 코드를 /dependency/elements에서 컴포넌트화 하여 여러 페이지에서 import하여 재사용 가능합니다.
 * scss가 아닌 plugin 관련 css나 static css는 반드시 css/static 안에 넣어주셔야 정상 배포 됩니다.
 * dist 배포 명령을 실행했을 경우 /dist 폴더가 자동생성 되며 Nunjuck 템플릿이 HTML로 변환되어 배포 됩니다. 
-* 샘플용 파일들이 첨부되어 있으며 사용하지 않는 파일은 삭제 해 주세요.
+* web server 실행시 가이드 페이지로 접속되며 가이드의 정적 페이지를 수정하여 산출물 가이드로 사용할 수 있습니다. 
 * 개인용도로 제작된 프레임워크인 만큼 프로젝트에 맞게 프레임워크를 재구성 하여 사용하셔야 합니다.
+* 샘플용 파일들이 첨부되어 있으며 사용하지 않는 파일은 삭제 해 주세요.
 ***
 
-## Visual Studio Code 셋팅 방법   
-* **Visual Studio Code에서 실행할 경우 몇가지 작업을 추가로 해야합니다.**
+## Default Json (src/html directory)   
+```bash
+{
+    "page_title": "테스트",    // title tag 에 입력
+    "progress" : "완료",  // guide의 페이지 진행상황
+    "remarks" : "비고",   // guide의 페이지 비고
+    "category" : "테스트 > 테스트",   // guide의 페이지 카테고리
+    "layout" : {
+        "header": true, // false시 header 불러오지 않음
+        "footer": true, // false시 footer 불러오지 않음
+        "class_container": "",  // .container에 추가로 넣을 클래스
+        "class_main": "main",   // #main에 추가로 넣을 클래스
+        "class_inner": "inner"  // #main > div에 추가로 넣을 클래스
+    },
+    "cssList" : ["customA, customB"], // 해당 페이지에서만 사용될 css 리스트
+    "content" : "샘플"  // 내용
+}
+```
 
+## Visual Studio Code 셋팅 방법 
+  
 > gulp 라이브러리를 global로 설치
 ```bash
 npm install -g gulp

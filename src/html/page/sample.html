@@ -1,5 +1,14 @@
 {% extends "html/layout/layout.html" %}
+{% import "dependency/elements/basic/basic.html" as basic %}
 
 {% block content %}
-    {{ content }}
+    <div class="case1">
+        {{ basic.make() }}
+    </div>
+
+    <div class="case2">
+        {% call basic.make2() %}
+           <em>json data : {{ content }}</em>
+        {% endcall %}
+    </div>
 {%- endblock %}

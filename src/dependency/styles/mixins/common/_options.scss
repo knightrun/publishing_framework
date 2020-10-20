@@ -104,20 +104,13 @@
 }
 
 @mixin common_options-position() {
-
-	/* box align */
 	.float--left{
 		float:left;
 	}
 	.float--right{
 		float:right;
 	}
-	.float--clear{
-		clear:both;
-	}
 
-
-	/* text align */
 	.text-align--left{
 		text-align:left;
 	}
@@ -128,8 +121,6 @@
 		text-align:center;
 	}
 
-
-	/* IR */
 	.screen--out {
 		position:absolute;
 		width:1px;
@@ -156,23 +147,5 @@
 		&.block {
 			display: block;
 		}
-	}
-	sup {
-		font-family: inherit;
-		font-weight: inherit;
-	}
-
-	/* float clear */
-	.clearfix:after {
-		clear:both;
-		display:block;
-		content:"";
-		height:0;
-		visibility:hidden;
-	}
-
-	.clearfix {
-		display:block;
-		min-height:1px;
 	}
 }
