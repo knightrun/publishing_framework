@@ -1,5 +1,7 @@
 # 퍼블리싱 프레임워크 
 > 자바스크립트 템플릿 엔진을 사용하여 보다 정교하고 다양한 웹 페이지 제작을 위한 오픈소스 퍼블리싱 프레임워크입니다.
+> * 반복되는 HTML을 템플릿으로 쉽게 재사용할 수 있습니다. ex) header, footer
+> * Sass로 가독성이 높고 재사용에 유리한 CSS를 생성할 수 있습니다.
 
 ## 구성요소
 * [Node.js 12.x](https://nodejs.org/ko/)
@@ -110,20 +112,20 @@ product_video
   
 * ### css
   - 스타일 관련 파일을 포함하는 디렉토리
-  - #### **`/static`** : plugin 관련 css나 static css 파일을 포함하는 디렉토리
+  - **`/static`** : plugin 관련 css나 static css 파일을 포함하는 디렉토리
     
 * ### dependency
-  - #### **`/elements`** : Nunjucks - macro 관련 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
-  - #### **`/fonts`** : 공통 폰트 파일을 포함하는 디렉토리
-  - #### **`/scripts`** : 공통 스크립트 파일을 포함하는 디렉토리
-  - #### **`/styles`** : 공통 Sass - import, mixin 관련 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
+  - **`/elements`** : Nunjucks - macro 관련 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
+  - **`/fonts`** : 공통 폰트 파일을 포함하는 디렉토리
+  - **`/scripts`** : 공통 스크립트 파일을 포함하는 디렉토리
+  - **`/styles`** : 공통 Sass - import, mixin 관련 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
     
 * ### html
-  - #### **`/common`** : 공통 HTML 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
-  - #### **`/layout`** : 공통 레이아웃 HTML 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
-  - #### **`/page`** : 프로젝트 HTML 파일을 포함하는 디렉토리
-  - #### **`/other`** : 프로젝트 외 별도의 HTML 파일을 포함하는 디렉토리
-  - #### **`/sample`** : 샘플페이지 HTML 파일을 포함하는 디렉토리
+  - **`/common`** : 공통 HTML 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
+  - **`/layout`** : 공통 레이아웃 HTML 파일을 포함하는 디렉토리 (build 시 /dist로 배포되지 않음)
+  - **`/page`** : 프로젝트 HTML 파일을 포함하는 디렉토리
+  - **`/other`** : 프로젝트 외 별도의 HTML 파일을 포함하는 디렉토리
+  - **`/sample`** : 샘플페이지 HTML 파일을 포함하는 디렉토리
   
 * ### images
   - 이미지 파일을 포함하는 디렉토리
