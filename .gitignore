@@ -2,3 +2,4 @@
 .idea/
 yarn.lock
 yarn-error.log
+/debug.log

@@ -6,26 +6,42 @@
     h2{
         @include vw('font-size',24px, $mob-s);
         font-weight: 400;
+        color:#fff;
+        background-color: #343a40;
+        @include vw('padding-left',10px, $mob-s);
+        @include vw('padding-righte',10px, $mob-s);
+        @include vw('padding-top',10px, $mob-s);
+        @include vw('padding-bottom',10px, $mob-s);
 
         @include breakpoint($point: tablet-l) {
             font-size: 32px;
             font-weight: 500;
+            padding:20px;
         }
     }
 }
 
 #main{
+    @include vw('padding-left',10px, $mob-s);
+    @include vw('padding-righte',10px, $mob-s);
+    @include vw('padding-top',10px, $mob-s);
+    @include vw('padding-bottom',10px, $mob-s);
 
+    @include breakpoint($point: tablet-l) {
+        padding: 20px;
+    }
 }
 
 .footer{
     color: #fff;
     background-color: #222;
-    @include vw('padding-top', 10px, $mob-s);
-    @include vw('padding-bottom', 10px, $mob-s);
+    @include vw('padding-left',10px, $mob-s);
+    @include vw('padding-righte',10px, $mob-s);
+    @include vw('padding-top',10px, $mob-s);
+    @include vw('padding-bottom',10px, $mob-s);
 
     @include breakpoint($point: tablet-l) {
-        padding: 15px 0;
+        padding: 20px;
     }
 }
 

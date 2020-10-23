@@ -2,13 +2,19 @@
 {% import "dependency/elements/basic/basic.html" as basic %}
 
 {% block content %}
-    <div class="case1">
+    <div class="case case1">
+        <!-- macro -->
         {{ basic.make() }}
     </div>
 
-    <div class="case2">
+    <div class="case case2">
+        <!-- macro의 caller 사용법 -->
         {% call basic.make2() %}
            <em>json data : {{ content }}</em>
         {% endcall %}
+    </div>
+
+    <div class="case case3">
+        <img src="/images/logo.png" alt="">
     </div>
 {%- endblock %}

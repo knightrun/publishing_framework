@@ -11,5 +11,5 @@
         "class_inner": "inner"
     },
     "cssList" : ["customA, customB"],
-    "content" : "샘플"
+    "content" : "macro caller"
 }
