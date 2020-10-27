@@ -146,7 +146,7 @@ product_video
 * json 파일에서 guide나 layout 관련 옵션을 설정할 수 있으며 json 파일을 생성 하지 않은 경우 header 와 footer가 import 되지 않습니다.  
 * 공통으로 사용되는 코드를 /dependency/elements에서 컴포넌트화 하여 여러 페이지에서 import하여 재사용 가능합니다.
 * scss가 아닌 plugin 관련 css나 static css는 반드시 css/static 안에 넣어주셔야 정상 배포 됩니다.
-* dist 배포 명령을 실행했을 경우 /dist 폴더가 자동생성 되며 Nunjuck 템플릿이 HTML로 변환되어 배포 됩니다. 
+* dist 배포 명령을 실행했을 경우 /dist 폴더가 자동생성 되며 Nunjuck 템플릿이 HTML로 변환되어 배포 됩니다.
 * web server 실행시 가이드 페이지로 접속되며 가이드의 정적 페이지를 수정하여 산출물 가이드로 사용할 수 있습니다. 
 * 개인용도로 제작된 프레임워크인 만큼 프로젝트에 맞게 프레임워크를 재구성 하여 사용하셔야 합니다.
 * 샘플용 파일들이 첨부되어 있으며 사용하지 않는 파일은 삭제 해 주세요.
@@ -173,7 +173,7 @@ product_video
 
 ## Builder
 * ### gulpfile.babel.js     
-  - relativePath : dist 디렉토리로 배포시 페이지안의 리소스 경로를 절대경로나 상대경로로 지정할 수 있습니다.
+  - relativePath : 절대경로로 작업한 개발 소스(script src, css link, image src, css background-image 등)를 dist 배포시 상대경로로 변환 하여 배포할 수 있습니다.
   
 * ### 다국어 프로젝트인 경우 가이드 페이지와 관련된 코드를 수정해주셔야 합니다.    
   - server.js에서 loadPreviewPath 로 실행되는 부분을 loadPreviewLanguagePath 함수로 바꿔 주세요. 
