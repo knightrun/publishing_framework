@@ -179,7 +179,11 @@ product_video
 ***
 
 ## 다국어 프로젝트 (폴더를 구분해야 하는경우)
-  - gulpfile.babel.js 에서 multilingual를 true로 설정 한 후 lang 배열에 구분할 폴더 명을 작성해주세요.
+  - gulpfile.babel.js 에서 multilingual를 true로 설정 한 후 lang 배열에 구분할 폴더 명을 작성해주세요
+```bash
+    multilingual : true,
+    lang : ['ko','en']
+```
   - src/html/page 에 다국어 폴더를 생성해 주세요. ※ 반드시 폴더만 생성해야 합니다.
 ```bash 
     ex) 📂src
@@ -197,8 +201,7 @@ product_video
             ┗ 📜page_en.html
 ```
   - src/@guide/page에서 생성한 html 안에 코드를 각각 수정해주세요. (✔ 표시부분)
-```bash 
-    ex) 
+```bash  
     {% set guideMenuIndex = 2 %}
     {% set guideTitle = "페이지 리스트" %}
     ✔{% set guideSubTitle = "국문" %}  ※ guideSubTitle은 추후 수정할 IA.json 이름과 동일해야 합니다.
@@ -214,28 +217,27 @@ product_video
 ```  
   - src/@guide/IA.json을 수정해주세요.
 ```bash 
-"guideGnb" : [
-    {
-        "link" : "/@guide/page/page_ko.html", ※ default url 변경
-        "text" : "페이지 리스트"
-    },
-],
+   "guideGnb" : [
+      {
+         "link" : "/@guide/page/page_ko.html", ※ default url 변경
+         "text" : "페이지 리스트"
+      },
+   ],
 
-
-"guideMenu" : {
-    "menu2" : [ ※ src/@guide/page에서 생성한 html data 추가
-        {
+   "guideMenu" : {
+      "menu2" : [ ※ src/@guide/page에서 생성한 html data 추가
+         {
             "link" : "/@guide/page/page_ko.html",
             "text" : "국문",
             "iconClass" : "fas fa-list"
-        },
-        {
-          "link" : "/@guide/page/page_en.html",
-          "text" : "영문",
-          "iconClass" : "fas fa-list"
-        }
-		],
-}  
+         },
+         {
+            "link" : "/@guide/page/page_en.html",
+            "text" : "영문",
+            "iconClass" : "fas fa-list"
+         }
+      ],
+   }  
 ```
 
 ## Visual Studio Code 셋팅 방법 
