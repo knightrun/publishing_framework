@@ -1,5 +1,7 @@
-import gulpTask from './load-gulp-task';
+import serverTask from './tasks/serverTask';
+import productTask from './tasks/productTask';
 
-export default ( $, option ) => {
-    gulpTask( $, option );
+export default () => {
+    serverTask();
+    productTask();
 }

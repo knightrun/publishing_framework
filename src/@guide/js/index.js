@@ -52,13 +52,15 @@
 		var $codeBox = $('.code-pre:not(".sample-code") pre');
 		var $sampleCodeBox = $('.sample-code pre');
 		var $iframe = $('.iframe-preview iframe');
-		$.get(url, function( data ){
-			$codeBox.text(data);
-			$codeBox.addClass("prettyprint");
-			$sampleCodeBox.addClass("prettyprint");
-			window.prettyPrint && prettyPrint()
-		});
-		$iframe.attr('src', url);
+
+		// $.get(url, function( data ){
+		// 	$codeBox.text(data);
+		// 	$codeBox.addClass("prettyprint");
+		// });
+		// $iframe.attr('src', url);
+
+		$sampleCodeBox.addClass("prettyprint");
+		window.prettyPrint && prettyPrint()
 	}
 
 	function copyInit() {

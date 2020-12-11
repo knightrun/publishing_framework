@@ -1,7 +1,7 @@
 import path from 'path';
 
 const root = process.cwd();
-const obj = {
+const paths = {
     default : path.join(`/@guide/basic/basic.html`),
     tasks : './system/',
     settings : path.join(root,`/system/settings`),
@@ -62,6 +62,5 @@ const obj = {
     distDependencyScriptMinFile : path.join(root,`/dist/dependency/scripts/**/*.min.js`),
     distDependencyFont : path.join(root,`/dist/dependency/fonts`)
 };
-const target = obj;
 
-export { target };
+export { paths };

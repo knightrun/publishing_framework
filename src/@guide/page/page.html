@@ -2,18 +2,9 @@
 {% set guideTitle = "페이지 리스트" %}
 {% set guideSubTitle = "페이지 리스트" %}
 
-
 {% extends "@guide/index.html" %}
 {% block body %}
     {{ compNode | addGlobalVar('compNode') }}
-
-    {% set tmp =  _eval('_.each( env.vars.compNode, function( item ){
-        //console.log(item);
-	})') %}
-
-    {% set clearMemory = _eval('(function(){
-        delete env.vars.compNode;
-    }())') %}
 
     {% for page in compNode %}
         {% set totalLen = _.size( page.list )%}

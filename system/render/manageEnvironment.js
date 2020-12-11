@@ -1,6 +1,8 @@
 //다른 페이지의 macro를 import한 template에서는 addFilter가 2번 호출되며 처음에는 첫 인자값으로 받는 객체를 undifined로 인식하기 때문에 limit 처럼 예외처리를 다 해줘야 한다.
-export default ( env, $ ) => {
-	const _ = $.lodash;
+import lodash from 'lodash';
+
+export default ( env ) => {
+	const _ = lodash;
 
 	env.addFilter('is_string', function(obj) {
 		return typeof obj == 'string';

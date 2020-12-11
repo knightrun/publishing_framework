@@ -1,3 +1,6 @@
+import express from 'express';
+import { paths } from '../settings/paths';
+
 let router,
     jsonData;
 
@@ -5,8 +8,8 @@ function jsonDataSet( data ){
     jsonData = data;
 }
 
-function routerSet( $, options ) {
-    router = $.express.Router();
+function routerSet() {
+    router = express.Router();
 
     router.get('/', (req,res) => {
         // return res.render(options.paths.default);
@@ -15,7 +18,7 @@ function routerSet( $, options ) {
     router.get('*.html', (req, res) => {
         //listen과 render2번 호출됨
         // let requrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-        return res.render( options.paths.src + req.url, jsonData );
+        return res.render( paths.src + req.url, jsonData );
     });
 }
 
