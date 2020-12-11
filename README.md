@@ -141,7 +141,7 @@ product_video
 ***
 
 ## Reference   
-* src내에서는 절대경로(필수)로 사용해주세요. 추후 빌드시 상대경로로 치환가능합니다. 
+* src내에서는 절대경로(필수)로 사용해주세요. 추후 빌드시 상대경로로 변환 가능합니다. 
 * 다수의 레이아웃 제작 할 수 있으며 페이지에서 필요한 레이아웃을 선언하여 사용 가능합니다. 
 * src/html 디렉토리의 모든 html파일에서 동일한 이름의 json 파일을 동일한 경로에 생성한 경우 json에 입력한 데이터가 자동으로 html로 로드되며 템플릿 문법으로 출력 가능합니다.
 * json 파일에서 guide나 layout 관련 옵션을 설정할 수 있으며 json 파일을 생성 하지 않은 경우 header 와 footer가 import 되지 않습니다.  
@@ -172,17 +172,72 @@ product_video
 }
 ```
 
-## Builder
-* ### gulpfile.babel.js     
-  - relativePath : 절대경로로 작업한 개발 소스(script src, css link, image src, css background-image 등)를 dist 배포시 상대경로로 변환 하여 배포할 수 있습니다.
-  
-* ### 다국어 프로젝트인 경우 가이드 페이지와 관련된 코드를 수정해주셔야 합니다.    
-  - server.js에서 loadPreviewPath 로 실행되는 부분을 loadPreviewLanguagePath 함수로 바꿔 주세요. 
-  - nodePath.js에서 loadPreviewLanguagePath 함수부분을 다국어에 맞춰서 Object를 수정해주세요.
-  - @guide/page에서 페이지를 각각 구분해주세요 예)page_ko.html, page_en.html
-  - page의 코드에서 compNode를 각 코드에 맞게 바꿔주세요. 예)compNode.ko, compNode.en
+## Builder Options (gulpfile.babel.js) 
+ - relativePath : src의 절대경로로 작업한 개발 소스(script src, css link, image src, css background-image 등)를 dist 배포시 상대경로로 변환 하여 배포할 수 있습니다.
+ - multilingual : 다국어 설정을 할 수 있습니다.
+ - lang : 사용할 다국어의 리스트를 작성합니다. 다국어가 설정되었을 경우 사용됩니다.
 ***
-      
+
+## 다국어 프로젝트 (폴더를 구분해야 하는경우)
+  - gulpfile.babel.js 에서 multilingual를 true로 설정 한 후 lang 배열에 구분할 폴더 명을 작성해주세요.
+  - src/html/page 에 다국어 폴더를 생성해 주세요. ※ 반드시 폴더만 생성해야 합니다.
+```bash 
+    ex) 📂src
+         ┗ 📂html
+            ┗ 📂page
+               ┗ 📂ko
+               ┗ 📂en
+               ┗ 📜sample.html(❌ html 파일은 해당 폴더에 생성해야합니다. 파일이 있을경우 서버에러가 발생될 수 있습니다.)
+```
+  - src/@guide/page에서 html 파일을 다국어 맞춰 각각 생성해주세요
+```bash 
+    ex) 📂@guide
+         ┗ 📂page
+            ┗ 📜page_ko.html
+            ┗ 📜page_en.html
+```
+  - src/@guide/page에서 생성한 html 안에 코드를 각각 수정해주세요. (✔ 표시부분)
+```bash 
+    ex) 
+    {% set guideMenuIndex = 2 %}
+    {% set guideTitle = "페이지 리스트" %}
+    ✔{% set guideSubTitle = "국문" %}  ※ guideSubTitle은 추후 수정할 IA.json 이름과 동일해야 합니다.
+
+    {% extends "@guide/index.html" %}
+    {% block body %}
+        {{ compNode | addGlobalVar('compNode') }}
+
+        ✔{% for page in compNode.ko %} ※ compNode 뒤에 해당 언어 property 추가
+            {% set totalLen = _.size( page.list )%}
+            <h3 class="pat30">{{ page.name }}</h3>
+            <div class="work-list">
+```  
+  - src/@guide/IA.json을 수정해주세요.
+```bash 
+"guideGnb" : [
+    {
+        "link" : "/@guide/page/page_ko.html", ※ default url 변경
+        "text" : "페이지 리스트"
+    },
+],
+
+
+"guideMenu" : {
+    "menu2" : [ ※ src/@guide/page에서 생성한 html data 추가
+        {
+            "link" : "/@guide/page/page_ko.html",
+            "text" : "국문",
+            "iconClass" : "fas fa-list"
+        },
+        {
+          "link" : "/@guide/page/page_en.html",
+          "text" : "영문",
+          "iconClass" : "fas fa-list"
+        }
+		],
+}  
+```
+
 ## Visual Studio Code 셋팅 방법 
   
 > gulp 라이브러리를 global로 설치
