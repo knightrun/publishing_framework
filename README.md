@@ -2,6 +2,7 @@
 > 자바스크립트 템플릿 엔진을 사용하여 보다 정교하고 다양한 웹 페이지 제작을 위한 오픈소스 퍼블리싱 프레임워크입니다.
 > * 반복되는 HTML을 템플릿으로 쉽게 재사용할 수 있습니다. ex) layout, header, footer, component
 > * Sass로 가독성이 높고 재사용에 유리한 CSS를 생성할 수 있습니다.
+> * 기본적인 산출물 가이드 페이지를 제공하고 있습니다.
 
 ## 구성요소
 * [Node.js 12.x](https://nodejs.org/ko/)
@@ -186,19 +187,19 @@ product_video
 ```
   - src/html/page 에 다국어 폴더를 생성해 주세요. ※ 반드시 폴더만 생성해야 합니다.
 ```bash 
-    ex) 📂src
-         ┗ 📂html
-            ┗ 📂page
-               ┗ 📂ko
-               ┗ 📂en
-               ┗ 📜sample.html(❌ html 파일은 해당 폴더에 생성해야합니다. 파일이 있을경우 서버에러가 발생될 수 있습니다.)
+    ex) 📂 src
+         ┗ 📂 html
+            ┗ 📂 page
+               ┗ 📂 ko
+               ┗ 📂 en
+               ┗ 📜 sample.html(❌ html 파일은 해당 폴더에 생성해야합니다. 파일이 있을경우 서버에러가 발생될 수 있습니다.)
 ```
   - src/@guide/page에서 html 파일을 다국어 맞춰 각각 생성해주세요
 ```bash 
-    ex) 📂@guide
-         ┗ 📂page
-            ┗ 📜page_ko.html
-            ┗ 📜page_en.html
+    ex) 📂 @guide
+         ┗ 📂 page
+            ┗ 📜 page_ko.html
+            ┗ 📜 page_en.html
 ```
   - src/@guide/page에서 생성한 html 안에 코드를 각각 수정해주세요. (✔ 표시부분)
 ```bash  
